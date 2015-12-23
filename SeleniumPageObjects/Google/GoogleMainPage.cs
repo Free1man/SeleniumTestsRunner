@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MSTestExample;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -9,14 +10,16 @@ using System.Threading.Tasks;
 
 namespace SeleniumPageObjects.Google
 {
+   
+
     public class GoogleMainPage
     {
-        private IWebDriver _driver;
+        private ISeleniumRunner _runner;
 
-        public GoogleMainPage(IWebDriver driver)
+        public GoogleMainPage(ISeleniumRunner runner)
         {
-            this._driver = driver;
-            PageFactory.InitElements(_driver, this);
+            this._runner = runner;
+            PageFactory.InitElements(_runner.Driver, this);
         }
         
         [FindsBy(How = How.Id, Using = "lst-ib")]
@@ -34,7 +37,7 @@ namespace SeleniumPageObjects.Google
 
         public void ClickSearchResultLink(string linkToClickText)
         {
-            var linkToClick = _driver.FindElement(By.LinkText(linkToClickText));
+            var linkToClick = _runner.Driver.FindElement(By.LinkText(linkToClickText));
             linkToClick.Click();
         }
       
