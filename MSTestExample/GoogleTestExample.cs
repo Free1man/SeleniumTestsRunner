@@ -1,44 +1,41 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 using SeleniumPageObjects.Google;
+
 
 namespace MSTestExample
 {
     [TestClass]
     public class GoogleTestExample
     {
-
-        public IWebDriver driver = new FirefoxDriver();
-
+        private IWebDriver _driver;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            driver.Navigate().GoToUrl("https://www.google.co.nz/");
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            _driver = new Runner().DefaultBrowser();
         }
-
+        
         [TestCleanup]
         public void TestCleanup()
         {
-            driver.Close();
+            _driver.Close();
         }
 
         [TestMethod]
         public void SimpleGoogleSearch()
         {
-            var googleManiPage = new GoogleMainPage(driver);
+            var googleManiPage = new GoogleMainPage(_driver);
 
-            googleManiPage.Search("test");    
-        }
+            googleManiPage.Search("test");
+        }      
 
         [TestMethod]
         public void SimpleGoogleTransalteTest()
         {
-            var googleManiPage = new GoogleMainPage(driver);
-            var googleTranslatePage = new GoogleTranslatePage(driver);
+            var googleManiPage = new GoogleMainPage(_driver);
+            var googleTranslatePage = new GoogleTranslatePage(_driver);
 
             googleManiPage.Search("google translate");
             googleManiPage.ClickSearchResultLink("Google Translate");
@@ -47,5 +44,8 @@ namespace MSTestExample
             var result = googleTranslatePage.GetTranslationsResult();
             Console.WriteLine(result);
         }
+
+
+        
     }
 }

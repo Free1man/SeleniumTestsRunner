@@ -6,7 +6,7 @@ namespace SeleniumPageObjects.Google
 {
     public class GoogleTranslatePage
     {
-        public IWebDriver _driver;
+        private IWebDriver _driver;
 
         public GoogleTranslatePage(IWebDriver driver)
         {
@@ -33,7 +33,6 @@ namespace SeleniumPageObjects.Google
             {
                 result = txtTranslationsResult.Text;
             }
-
             return result;
         }
     }

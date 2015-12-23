@@ -11,7 +11,7 @@ namespace SeleniumPageObjects.Google
 {
     public class GoogleMainPage
     {
-        public IWebDriver _driver;
+        private IWebDriver _driver;
 
         public GoogleMainPage(IWebDriver driver)
         {
@@ -37,11 +37,6 @@ namespace SeleniumPageObjects.Google
             var linkToClick = _driver.FindElement(By.LinkText(linkToClickText));
             linkToClick.Click();
         }
-
-        public IWebDriver BrowserUnderTest()
-        {
-            var browserUnderTest = new FirefoxDriver();
-            return browserUnderTest;
-        }
+      
     }
 }
