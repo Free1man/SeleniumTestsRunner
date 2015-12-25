@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SeleniumPageObjects;
 using SeleniumPageObjects.Google;
 
 
@@ -13,7 +14,7 @@ namespace MSTestExample
         [TestInitialize]
         public void TestInitialize()
         {
-            _seleniumRunner = new Runner();
+            _seleniumRunner = new SeleniumRunner();
         }
         
         [TestCleanup]
