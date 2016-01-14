@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+using SeleniumPageObjects;
 using SeleniumPageObjects.Google;
 
 
@@ -9,24 +9,24 @@ namespace MSTestExample
     [TestClass]
     public class GoogleTestExample
     {
-        private IWebDriver _driver;
+        private ISeleniumRunner _seleniumRunner;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _driver = new Runner().DefaultBrowser();
+            _seleniumRunner = new SeleniumRunner();
         }
         
         [TestCleanup]
         public void TestCleanup()
         {
-            _driver.Close();
+            _seleniumRunner.Quit();
         }
 
         [TestMethod]
         public void SimpleGoogleSearch()
         {
-            var googleManiPage = new GoogleMainPage(_driver);
+            var googleManiPage = new GoogleMainPage(_seleniumRunner);
 
             googleManiPage.Search("test");
         }      
@@ -34,8 +34,8 @@ namespace MSTestExample
         [TestMethod]
         public void SimpleGoogleTransalteTest()
         {
-            var googleManiPage = new GoogleMainPage(_driver);
-            var googleTranslatePage = new GoogleTranslatePage(_driver);
+            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleTranslatePage = new GoogleTranslatePage(_seleniumRunner);
 
             googleManiPage.Search("google translate");
             googleManiPage.ClickSearchResultLink("Google Translate");

@@ -1,17 +1,16 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-
 namespace SeleniumPageObjects.Google
 {
     public class GoogleTranslatePage
     {
-        private IWebDriver _driver;
+        private ISeleniumRunner _runner;
 
-        public GoogleTranslatePage(IWebDriver driver)
+        public GoogleTranslatePage(ISeleniumRunner runner)
         {
-            this._driver = driver;
-            PageFactory.InitElements(_driver, this);
+            this._runner = runner;
+            PageFactory.InitElements(_runner.Driver, this);
         }
 
         [FindsBy(How = How.Id, Using = "source")]
@@ -29,8 +28,9 @@ namespace SeleniumPageObjects.Google
         public string GetTranslationsResult()
         {
             var result = "";
-            while(string.IsNullOrWhiteSpace(result) == true)
-            {
+            //TO DO: Fix this    
+            while (string.IsNullOrWhiteSpace(result) == true)
+            {   
                 result = txtTranslationsResult.Text;
             }
             return result;
