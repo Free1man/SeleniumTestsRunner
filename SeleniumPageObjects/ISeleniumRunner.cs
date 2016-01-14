@@ -5,7 +5,7 @@ namespace SeleniumPageObjects
     public interface ISeleniumRunner
     {
         IWebDriver Driver { get; }
-        void Close();
+        void Quit();
     }
 
 }

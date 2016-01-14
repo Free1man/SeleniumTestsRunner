@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace SeleniumPageObjects.Google
 {
@@ -21,14 +16,9 @@ namespace SeleniumPageObjects.Google
             PageFactory.InitElements(_runner.Driver, this);
         }
         
-        [FindsBy(How = How.Id, Using = "lst-ib")]
+        [FindsBy(How = How.Name, Using = "q")]
         public IWebElement txtSearch { get; set; }
                 
-
-        [FindsBy(How = How.Id, Using = "lst-ib")]
-        public IWebElement mySelect { get; set; }
-
-
         public void Search (string textToSearch)
         {
             txtSearch.SendKeys(textToSearch);
@@ -39,6 +29,6 @@ namespace SeleniumPageObjects.Google
             var linkToClick = _runner.Driver.FindElement(By.LinkText(linkToClickText));
             linkToClick.Click();
         }
-      
+
     }
 }

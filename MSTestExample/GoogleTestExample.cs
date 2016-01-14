@@ -20,7 +20,7 @@ namespace MSTestExample
         [TestCleanup]
         public void TestCleanup()
         {
-            _seleniumRunner.Close();
+            _seleniumRunner.Quit();
         }
 
         [TestMethod]
