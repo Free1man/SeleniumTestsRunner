@@ -8,7 +8,6 @@ namespace SeleniumPageObjects
 {
     class DriverService 
     {
-        //public IWebDriver Driver { get; }
         public IWebDriver GetBrowserForDriver(string browser)
         {
             switch (browser) { 
@@ -16,13 +15,13 @@ namespace SeleniumPageObjects
                     return new FirefoxDriver();
 
                 case "Chrome":
-                return new ChromeDriver();
+                    return new ChromeDriver();
 
                 case "PhantomJS":
-                return new PhantomJSDriver();
+                    return new PhantomJSDriver();
 
                 default:
-                throw new ArgumentException("Not supported browser");
+                    throw new ArgumentException("Not supported browser");
             }
         }
     }
