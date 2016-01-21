@@ -22,6 +22,7 @@ namespace SeleniumPageObjects.Google
         public void Search (string textToSearch)
         {
             txtSearch.SendKeys(textToSearch);
+            txtSearch.SendKeys(Keys.Enter);
         }
 
         public void ClickSearchResultLink(string linkToClickText)
