@@ -31,5 +31,10 @@ namespace SeleniumPageObjects.Google
             linkToClick.Click();
         }
 
+        public void CheckLinkPresence(string linkToCheckText)
+        {
+            var linkToCheck = _runner.Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
+        }
+
     }
 }

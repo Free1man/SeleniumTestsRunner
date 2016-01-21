@@ -26,19 +26,19 @@ namespace MSTestExample
         [TestMethod]
         public void SimpleGoogleSearch()
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleMainPage = new GoogleMainPage(_seleniumRunner);
 
-            googleManiPage.Search("test");
+            googleMainPage.Search("test");
         }      
 
         [TestMethod]
         public void SimpleGoogleTransalteTest()
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleMainPage = new GoogleMainPage(_seleniumRunner);
             var googleTranslatePage = new GoogleTranslatePage(_seleniumRunner);
 
-            googleManiPage.Search("google translate");
-            googleManiPage.ClickSearchResultLink("Google Translate");
+            googleMainPage.Search("google translate");
+            googleMainPage.ClickSearchResultLink("Google Translate");
             googleTranslatePage.TransalteText("Test");
 
             var result = googleTranslatePage.GetTranslationsResult();

@@ -19,6 +19,7 @@ namespace SpecflowTestExample
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("SimpleGoolgeTest")]
+    [NUnit.Framework.CategoryAttribute("AppConfig")]
     public partial class SimpleGoolgeTestFeature
     {
         
@@ -31,7 +32,8 @@ namespace SpecflowTestExample
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SimpleGoolgeTest", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SimpleGoolgeTest", null, ProgrammingLanguage.CSharp, new string[] {
+                        "AppConfig"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,24 +67,17 @@ namespace SpecflowTestExample
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Google Search example test")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("test", "Speedtest.net by Ookla - The Global Broadband Speed Test", new string[0])]
         [NUnit.Framework.TestCaseAttribute("testing", "Software testing - Wikipedia, the free encyclopedia", new string[0])]
         public virtual void GoogleSearchExampleTest(string textToSearch, string results, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "mytag"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Google Search example test", @__tags);
-#line 4
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Google Search example test", exampleTags);
 #line 5
- testRunner.When(string.Format("I type {0} to search text field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 6
+ testRunner.When(string.Format("I type {0} to search text field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 7
  testRunner.Then(string.Format("in text results i should see {0}", results), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

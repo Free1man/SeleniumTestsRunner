@@ -1,6 +1,7 @@
-﻿Feature: SimpleGoolgeTest
-	
-@mytag
+﻿@AppConfig
+Feature: SimpleGoolgeTest
+
+
 Scenario Outline: Google Search example test
 	When I type <textToSearch> to search text field 
 	Then in text results i should see <results>

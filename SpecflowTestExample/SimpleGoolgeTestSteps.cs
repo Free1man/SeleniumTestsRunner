@@ -14,7 +14,7 @@ namespace SpecflowTestExample
         
         private ISeleniumRunner _seleniumRunner;
 
-        [BeforeScenario]
+        [BeforeScenario("AppConfig")]
         public void BeforeScenario()
         {
             _seleniumRunner = new SeleniumRunner();
@@ -30,16 +30,14 @@ namespace SpecflowTestExample
         public void WhenITypeToSearchTextField(string textToSearch)
         {
             var googleManiPage = new GoogleMainPage(_seleniumRunner);
-            googleManiPage.Search(textToSearch);
-         
-
+            googleManiPage.Search(textToSearch);     
         }
 
         [Then(@"in text results i should see (.*)")]
         public void ThenInTextResultsIShouldSee(string results)
         {
             var googleManiPage = new GoogleMainPage(_seleniumRunner);
-            googleManiPage.ClickSearchResultLink(results);
+            googleManiPage.CheckLinkPresence(results);
         }
 
     }
