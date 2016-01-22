@@ -21,7 +21,7 @@ namespace SeleniumPageObjects
                     return new PhantomJSDriver();
 
                 default:
-                    throw new ArgumentException("Not supported browser");
+                    throw new ArgumentException(browser + "- Not supported browser");
             }
         }
     }

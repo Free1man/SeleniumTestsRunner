@@ -1,35 +1,46 @@
-﻿using System;
-using System.Configuration;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 
 namespace SeleniumPageObjects
 {
 
     public class SeleniumRunner : ISeleniumRunner
     {
-        public IWebDriver Driver { get; set; }     
+        public IWebDriver Driver { get; }
+
+        private SeleniumRunnerInitialisationParameters _initParms;
+
+        public SeleniumRunnerInitialisationParameters InitParms
+        {
+            get
+            {
+                _initParms = new SeleniumRunnerInitialisationParameters();
+                return _initParms;
+            }
+            set
+            {
+                _initParms = this.InitParms;
+            }         
+        }
 
         public SeleniumRunner()
-        {          
-            Driver = new DriverService().GetBrowserForDriver(ConfigurationManager.AppSettings["DefaultBrowser"]);
-            Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["DefaultUrl"]);
-
-            double defaultWaitTime = Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]);
-            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(defaultWaitTime));
-            Driver.Manage().Window.Maximize();
+        {
+            Driver = new DriverService().GetBrowserForDriver(InitParms.Browser);
+            Driver.Navigate().GoToUrl(InitParms.Url);
+            Driver.Manage().Timeouts().ImplicitlyWait(InitParms.ImplicitWaitTime);
         }
+
+        public SeleniumRunner(SeleniumRunnerInitialisationParameters initParms) 
+        {
+            Driver = new DriverService().GetBrowserForDriver(initParms.Browser);
+            Driver.Navigate().GoToUrl(initParms.Url);
+            Driver.Manage().Timeouts().ImplicitlyWait(initParms.ImplicitWaitTime);
+        }
+
 
         public void Quit()
         {
             Driver.Quit();
         }
 
-        public WebDriverWait Wait()
-        {
-            var customWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-            return customWait;
-        }
-        
     }
 }
