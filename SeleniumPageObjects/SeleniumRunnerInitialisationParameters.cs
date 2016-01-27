@@ -12,7 +12,10 @@ namespace SeleniumPageObjects
         {
             get
             {
-                _browser = ConfigurationManager.AppSettings["DefaultBrowser"];
+                if (string.IsNullOrWhiteSpace(_browser))
+                {
+                    _browser = ConfigurationManager.AppSettings["DefaultBrowser"];
+                }
                 return _browser;
             }
             set
@@ -28,8 +31,15 @@ namespace SeleniumPageObjects
         {
             get
             {
-                _url = ConfigurationManager.AppSettings["DefaultUrl"];
+                if (string.IsNullOrWhiteSpace(_url))
+                {
+                    _url = ConfigurationManager.AppSettings["DefaultUrl"];
+                }
                 return _url;
+            }
+            set
+            {
+                _url = value;
             }
 
         }
@@ -40,8 +50,15 @@ namespace SeleniumPageObjects
         {
             get
             {
-                _implicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
+                if (_implicitWaitTime != null)
+                {
+                    _implicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
+                }
                 return _implicitWaitTime;
+            }
+            set
+            {
+                _implicitWaitTime = value;
             }
 
         }

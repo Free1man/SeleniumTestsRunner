@@ -14,8 +14,7 @@ namespace MSTestExample
         [TestInitialize]
         public void TestInitialize()
         {
-            _seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Firefox" });
-            //_seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Firefox", ImplicitWaitTime = 0});
+            _seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Firefox", Url = "https://www.google.co.nz" });         
         }
 
         [TestCleanup]
