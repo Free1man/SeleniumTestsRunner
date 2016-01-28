@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTestExample", "MSTestExample\MSTestExample.csproj", "{6E0EB013-4598-4112-9081-D378BD25F85D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumPageObjects", "SeleniumPageObjects\SeleniumPageObjects.csproj", "{6FB4C3B6-0348-4365-BF1A-E23707343CEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumFramework", "SeleniumPageObjects\SeleniumFramework.csproj", "{6FB4C3B6-0348-4365-BF1A-E23707343CEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecflowTestExample", "SpecflowTestExample\SpecflowTestExample.csproj", "{D7974585-4113-4470-BF59-C5757116E4B1}"
 EndProject
