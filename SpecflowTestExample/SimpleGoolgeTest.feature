@@ -1,5 +1,8 @@
-﻿Feature: SimpleGoolgeTest
+﻿@AppConfig
+Feature: SimpleGoolgeTest
 
+Background: 
+	Given 
 
 Scenario Outline: Google Search example test
 	When I type <textToSearch> to search text field 

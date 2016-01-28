@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SeleniumFramework.PageObjects.Google;
-using SeleniumFramework.SeleniumInfrastructure;
+using SeleniumPageObjects;
+using SeleniumPageObjects.Google;
 
 
 namespace MSTestExample
@@ -14,7 +14,7 @@ namespace MSTestExample
         [TestInitialize]
         public void TestInitialize()
         {
-            _seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Chrome", Url = "https://www.google.co.nz" });         
+            _seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Firefox", Url = "https://www.google.co.nz" });         
         }
 
         [TestCleanup]

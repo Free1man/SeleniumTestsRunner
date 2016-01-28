@@ -19,6 +19,7 @@ namespace SpecflowTestExample
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("SimpleGoolgeTest")]
+    [NUnit.Framework.CategoryAttribute("AppConfig")]
     public partial class SimpleGoolgeTestFeature
     {
         
@@ -31,7 +32,8 @@ namespace SpecflowTestExample
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SimpleGoolgeTest", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SimpleGoolgeTest", null, ProgrammingLanguage.CSharp, new string[] {
+                        "AppConfig"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,6 +65,14 @@ namespace SpecflowTestExample
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 4
+#line 5
+ testRunner.Given("", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Google Search example test")]
         [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate", new string[0])]
@@ -71,11 +81,13 @@ namespace SpecflowTestExample
         public virtual void GoogleSearchExampleTest(string textToSearch, string results, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Google Search example test", exampleTags);
-#line 4
+#line 7
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 4
+this.FeatureBackground();
+#line 8
  testRunner.When(string.Format("I type {0} to search text field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 6
+#line 9
  testRunner.Then(string.Format("in text results i should see {0}", results), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

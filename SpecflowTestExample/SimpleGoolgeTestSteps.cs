@@ -1,5 +1,9 @@
-﻿using SeleniumFramework.PageObjects.Google;
-using SeleniumFramework.SeleniumInfrastructure;
+﻿using SeleniumPageObjects;
+using SeleniumPageObjects.Google;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
@@ -10,7 +14,7 @@ namespace SpecflowTestExample
         
         private ISeleniumRunner _seleniumRunner;
 
-        [BeforeScenario]
+        [BeforeScenario("AppConfig")]
         public void BeforeScenario()
         {
             _seleniumRunner = new SeleniumRunner();
