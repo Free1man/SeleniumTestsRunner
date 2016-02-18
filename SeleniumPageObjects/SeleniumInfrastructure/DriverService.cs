@@ -6,7 +6,7 @@ using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    class DriverService 
+    public class DriverService 
     {
         public IWebDriver GetBrowserForDriver(string browser)
         {

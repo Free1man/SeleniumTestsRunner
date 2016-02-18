@@ -4,16 +4,9 @@ using SeleniumFramework.SeleniumInfrastructure;
 
 namespace SeleniumFramework.PageObjects.Google
 {
-    public class GoogleTranslatePage
+    public class GoogleTranslatePage : BasePageObject
     {
-        private ISeleniumRunner _runner;
-
-        public GoogleTranslatePage(ISeleniumRunner runner)
-        {
-            this._runner = runner;
-            PageFactory.InitElements(_runner.Driver, this);
-        }
-
+       
         [FindsBy(How = How.Id, Using = "source")]
         public IWebElement txtSourceText { get; set; }
 

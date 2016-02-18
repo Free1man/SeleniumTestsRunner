@@ -7,32 +7,23 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps
     {
-        
-        private ISeleniumRunner _seleniumRunner;
-
-        [BeforeScenario]
-        public void BeforeScenario()
-        {
-            _seleniumRunner = new SeleniumRunner();
-        }
-
         [AfterScenario]
         public void AfterScenario()
         {
-            _seleniumRunner.Quit();
+            DriverContext.Browser.Quit();
         }
       
         [When(@"I type (.*) to search text field")]
         public void WhenITypeToSearchTextField(string textToSearch)
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleManiPage = new GoogleMainPage();
             googleManiPage.Search(textToSearch);     
         }
 
         [Then(@"in text results i should see (.*)")]
         public void ThenInTextResultsIShouldSee(string results)
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleManiPage = new GoogleMainPage();
             googleManiPage.CheckLinkPresence(results);
         }
 
