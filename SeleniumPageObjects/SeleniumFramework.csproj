@@ -54,7 +54,7 @@
     <Compile Include="PageObjects\Google\GoogleMainPage.cs" />
     <Compile Include="PageObjects\Google\GoogleTranslatePage.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
-    <Compile Include="SeleniumInfrastructure\Driver\DriverSettingsReader.cs" />
+    <Compile Include="SeleniumInfrastructure\Driver\DriverSettingsReaderService.cs" />
     <Compile Include="SeleniumInfrastructure\PageObject\BasePageObject.cs" />
     <Compile Include="SeleniumInfrastructure\Browser\Browser.cs" />
     <Compile Include="SeleniumInfrastructure\Driver\DriverContext.cs" />

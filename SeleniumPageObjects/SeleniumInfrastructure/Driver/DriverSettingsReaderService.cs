@@ -6,7 +6,7 @@ using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public class DriverSettingsReader
+    public class DriverSettingsReaderService
     {
         public IWebDriver GetBrowserForDriverFromAppConfig(string browser)
         {

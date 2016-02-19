@@ -3,8 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using SeleniumFramework.SeleniumInfrastructure;
 
 namespace SeleniumFramework.PageObjects.Google 
-{
-   
+{   
 
     public class GoogleMainPage : BasePageObject
     { 

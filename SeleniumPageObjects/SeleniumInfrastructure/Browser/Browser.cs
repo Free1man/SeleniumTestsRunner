@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
+using SeleniumFramework.SeleniumInfrastructure.Config;
+using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public class Browser
+    public class Browser 
     {
         private readonly IWebDriver _driver;
 
@@ -28,6 +30,11 @@ namespace SeleniumFramework.SeleniumInfrastructure
         public void Quit()
         {
             DriverContext.Driver.Quit();
+        }
+
+        public void ManageImplicitlyWaitTime(TimeSpan licitlyWaitTime)
+        {
+            DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }
 
     }

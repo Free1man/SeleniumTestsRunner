@@ -15,6 +15,7 @@ namespace MSTestExample
         {
             BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
             DriverContext.Browser.GoToUrl(Settings.Url);
+            DriverContext.Browser.ManageImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [TestCleanup]

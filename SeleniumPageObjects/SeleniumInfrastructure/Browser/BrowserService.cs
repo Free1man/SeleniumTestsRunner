@@ -20,7 +20,7 @@ namespace SeleniumFramework.SeleniumInfrastructure
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;
                 case Browser.BrowserType.ReadFromAppConfig:
-                    DriverContext.Driver = new DriverSettingsReader().GetBrowserForDriverFromAppConfig(Settings.Browser);
+                    DriverContext.Driver = new DriverSettingsReaderService().GetBrowserForDriverFromAppConfig(Settings.Browser);
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;
                 default:
