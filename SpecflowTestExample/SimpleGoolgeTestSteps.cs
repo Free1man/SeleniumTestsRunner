@@ -1,5 +1,6 @@
 ﻿using SeleniumFramework.PageObjects.Google;
 using SeleniumFramework.SeleniumInfrastructure;
+using SeleniumFramework.SeleniumInfrastructure.Config;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
@@ -7,6 +8,14 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps
     {
+        [BeforeScenario]
+        public void BeforeScenario()
+        {
+            BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
+            DriverContext.Browser.GoToUrl(Settings.Url);
+            DriverContext.Browser.ManageImplicitlyWaitTime(Settings.ImplicitWaitTime);
+        }
+
         [AfterScenario]
         public void AfterScenario()
         {

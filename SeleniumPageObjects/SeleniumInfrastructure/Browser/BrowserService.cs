@@ -23,10 +23,7 @@ namespace SeleniumFramework.SeleniumInfrastructure
                     DriverContext.Driver = new DriverSettingsReaderService().GetBrowserForDriverFromAppConfig(Settings.Browser);
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;
-                default:
-                    DriverContext.Driver = new FirefoxDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
-                    break;
+                
             }
 
         }
