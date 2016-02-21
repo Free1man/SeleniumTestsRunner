@@ -1,5 +1,6 @@
 ﻿using SeleniumFramework.PageObjects.Google;
 using SeleniumFramework.SeleniumInfrastructure;
+using SeleniumFramework.SeleniumInfrastructure.Config;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
@@ -7,32 +8,31 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps
     {
-        
-        private ISeleniumRunner _seleniumRunner;
-
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _seleniumRunner = new SeleniumRunner();
+            BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
+            DriverContext.Browser.GoToUrl(Settings.Url);
+            DriverContext.Browser.ManageImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            _seleniumRunner.Quit();
+            DriverContext.Browser.Quit();
         }
       
         [When(@"I type (.*) to search text field")]
         public void WhenITypeToSearchTextField(string textToSearch)
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleManiPage = new GoogleMainPage();
             googleManiPage.Search(textToSearch);     
         }
 
         [Then(@"in text results i should see (.*)")]
         public void ThenInTextResultsIShouldSee(string results)
         {
-            var googleManiPage = new GoogleMainPage(_seleniumRunner);
+            var googleManiPage = new GoogleMainPage();
             googleManiPage.CheckLinkPresence(results);
         }
 

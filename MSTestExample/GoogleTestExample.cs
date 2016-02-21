@@ -2,31 +2,32 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumFramework.PageObjects.Google;
 using SeleniumFramework.SeleniumInfrastructure;
-
+using SeleniumFramework.SeleniumInfrastructure.Config;
 
 namespace MSTestExample
 {
     [TestClass]
     public class GoogleTestExample
     {
-        private ISeleniumRunner _seleniumRunner;
-
+        
         [TestInitialize]
         public void TestInitialize()
         {
-            _seleniumRunner = new SeleniumRunner(new SeleniumRunnerInitialisationParameters { Browser = "Chrome", Url = "https://www.google.co.nz" });         
+            BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
+            DriverContext.Browser.GoToUrl(Settings.Url);
+            DriverContext.Browser.ManageImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            _seleniumRunner.Quit();
+            DriverContext.Browser.Quit();
         }
 
         [TestMethod]
         public void SimpleGoogleSearch()
         {
-            var googleMainPage = new GoogleMainPage(_seleniumRunner);
+            var googleMainPage = new GoogleMainPage();
 
             googleMainPage.Search("test");
         }      
@@ -34,8 +35,8 @@ namespace MSTestExample
         [TestMethod]
         public void SimpleGoogleTransalteTest()
         {
-            var googleMainPage = new GoogleMainPage(_seleniumRunner);
-            var googleTranslatePage = new GoogleTranslatePage(_seleniumRunner);
+            var googleMainPage = new GoogleMainPage();
+            var googleTranslatePage = new GoogleTranslatePage();
 
             googleMainPage.Search("google translate");
             googleMainPage.ClickSearchResultLink("Google Translate");

@@ -2,13 +2,14 @@
 using System.Configuration;
 
 
-namespace SeleniumFramework.SeleniumInfrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
-    public class SeleniumRunnerInitialisationParameters
+    public static class Settings
     {
-        private string _browser;
 
-        public string Browser
+        private static string _browser;
+
+        public static string Browser
         {
             get
             {
@@ -25,9 +26,9 @@ namespace SeleniumFramework.SeleniumInfrastructure
 
         }
 
-        private string _url;
+        private static string _url;
 
-        public string Url
+        public static string Url
         {
             get
             {
@@ -44,9 +45,9 @@ namespace SeleniumFramework.SeleniumInfrastructure
 
         }
 
-        private TimeSpan _implicitWaitTime;
+        private static TimeSpan _implicitWaitTime;
 
-        public TimeSpan ImplicitWaitTime
+        public static TimeSpan ImplicitWaitTime
         {
             get
             {
@@ -64,5 +65,3 @@ namespace SeleniumFramework.SeleniumInfrastructure
         }
     }
 }
-
-
