@@ -8,12 +8,12 @@ namespace SeleniumFramework.SeleniumInfrastructure
     {
         private readonly IWebDriver _driver;
 
-        public Browser(IWebDriver driver)
+        public Browser()
         {
-            _driver = driver;
+            _driver = DriverContext.Driver;
         }
 
-        public BrowserType Type { get; set; }
+        private BrowserType Type { get; set; }
 
         public enum BrowserType
         {
@@ -32,7 +32,7 @@ namespace SeleniumFramework.SeleniumInfrastructure
             DriverContext.Driver.Quit();
         }
 
-        public void ManageImplicitlyWaitTime(TimeSpan licitlyWaitTime)
+        public void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }

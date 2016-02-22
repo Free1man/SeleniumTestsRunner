@@ -13,7 +13,7 @@ namespace SpecflowTestExample
         {
             BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
             DriverContext.Browser.GoToUrl(Settings.Url);
-            DriverContext.Browser.ManageImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            DriverContext.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [AfterScenario]

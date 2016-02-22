@@ -7,13 +7,23 @@ namespace SeleniumFramework.SeleniumInfrastructure
     {
         private static IWebDriver _driver;
 
-        public static IWebDriver Driver
+        internal static IWebDriver Driver
         {
             get { return _driver; }
             set { _driver = value; }
         }
 
-        public static Browser Browser { get; set; }
+        private static Browser _browser;
+
+        public static Browser Browser
+        {
+            get {
+                    _browser = new Browser();
+                    return _browser;
+                }
+            set { _browser = value; }
+        }
+
 
     }
 }

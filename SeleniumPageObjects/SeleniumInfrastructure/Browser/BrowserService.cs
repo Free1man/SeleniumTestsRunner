@@ -12,18 +12,14 @@ namespace SeleniumFramework.SeleniumInfrastructure
             switch (browserType)
             {
                 case Browser.BrowserType.Firefox:
-                    DriverContext.Driver = new FirefoxDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
+                    DriverContext.Driver = new FirefoxDriver();                 
                     break;
                 case Browser.BrowserType.Chrome:
-                    DriverContext.Driver = new ChromeDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
+                    DriverContext.Driver = new ChromeDriver();            
                     break;
                 case Browser.BrowserType.ReadFromAppConfig:
                     DriverContext.Driver = new DriverSettingsReaderService().GetBrowserForDriverFromAppConfig(Settings.Browser);
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
-                    break;
-                
+                    break;               
             }
 
         }
