@@ -6,9 +6,9 @@ using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public class DriverSettingsReaderService
+    public static class DriverService
     {
-        public IWebDriver GetBrowserForDriverFromAppConfig(string browser)
+        public static IWebDriver GetBrowserForDriver(string browser)
         {
             switch (browser) { 
                 case "Firefox":

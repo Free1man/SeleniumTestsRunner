@@ -1,20 +1,19 @@
 ﻿using OpenQA.Selenium;
-using SeleniumFramework.SeleniumInfrastructure.Config;
 using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public static class Browser
+    public class Browser
     {
         
-        private static IWebDriver Driver { get; }   
-        
-        static Browser()
+        private IWebDriver Driver { get; set; }
+
+        internal Browser()
         {
             Driver = DriverContext.Driver;
         }
 
-        private static BrowserType Type { get; set; }
+        private  BrowserType Type { get; set; }
 
         public enum BrowserType
         {
@@ -23,17 +22,17 @@ namespace SeleniumFramework.SeleniumInfrastructure
             ReadFromAppConfig
         }
 
-        public static void GoToUrl(string url)
+        public  void GoToUrl(string url)
         {
             Driver.Url = url;
         }
 
-        public static void Quit()
+        public  void Quit()
         {
             Driver.Quit();
         }
 
-        public static void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
+        public  void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
         {
             Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }
