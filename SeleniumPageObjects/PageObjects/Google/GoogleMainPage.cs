@@ -19,13 +19,13 @@ namespace SeleniumFramework.PageObjects.Google
 
         public void ClickSearchResultLink(string linkToClickText)
         {
-            var linkToClick = DriverContext.Driver.FindElement(By.LinkText(linkToClickText));
+            var linkToClick = Driver.FindElement(By.LinkText(linkToClickText));
             linkToClick.Click();
         }
 
         public void CheckLinkPresence(string linkToCheckText)
         {
-            var linkToCheck = DriverContext.Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
+            var linkToCheck = Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
         }
 
     }

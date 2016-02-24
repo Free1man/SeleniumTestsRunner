@@ -12,14 +12,14 @@ namespace SpecflowTestExample
         public void BeforeScenario()
         {
             BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
-            DriverContext.Browser.GoToUrl(Settings.Url);
-            DriverContext.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            Browser.GoToUrl(Settings.Url);
+            Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            DriverContext.Browser.Quit();
+            Browser.Quit();
         }
       
         [When(@"I type (.*) to search text field")]

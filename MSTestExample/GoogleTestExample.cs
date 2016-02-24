@@ -14,14 +14,14 @@ namespace MSTestExample
         public void TestInitialize()
         {
             BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
-            DriverContext.Browser.GoToUrl(Settings.Url);
-            DriverContext.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);       
+            Browser.GoToUrl(Settings.Url);
+            Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);       
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            DriverContext.Browser.Quit();
+            Browser.Quit();
         }
 
         [TestMethod]

@@ -4,16 +4,17 @@ using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public class Browser 
+    public static class Browser
     {
-        private readonly IWebDriver _driver;
-
-        public Browser()
+        
+        private static IWebDriver Driver { get; }   
+        
+        static Browser()
         {
-            _driver = DriverContext.Driver;
+            Driver = DriverContext.Driver;
         }
 
-        private BrowserType Type { get; set; }
+        private static BrowserType Type { get; set; }
 
         public enum BrowserType
         {
@@ -22,19 +23,19 @@ namespace SeleniumFramework.SeleniumInfrastructure
             ReadFromAppConfig
         }
 
-        public void GoToUrl(string url)
+        public static void GoToUrl(string url)
         {
-            DriverContext.Driver.Url = url;
+            Driver.Url = url;
         }
 
-        public void Quit()
+        public static void Quit()
         {
-            DriverContext.Driver.Quit();
+            Driver.Quit();
         }
 
-        public void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
+        public static void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
         {
-            DriverContext.Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
+            Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }
 
     }

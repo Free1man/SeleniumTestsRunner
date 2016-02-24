@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Support.PageObjects;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 
 namespace SeleniumFramework.SeleniumInfrastructure
@@ -6,9 +7,12 @@ namespace SeleniumFramework.SeleniumInfrastructure
     public abstract class BasePageObject 
     {
 
+        internal IWebDriver Driver { get; }
+
         public BasePageObject()
         {
-            PageFactory.InitElements(DriverContext.Driver, this);
+            Driver = DriverContext.Driver;
+            PageFactory.InitElements(Driver, this);
         }
 
     }
