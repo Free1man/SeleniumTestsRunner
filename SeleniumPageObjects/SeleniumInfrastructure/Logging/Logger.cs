@@ -5,12 +5,10 @@ using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
-    public class Logger
+    public class Logger : DriverContext
     {
-        public EventFiringWebDriver Driver { get; set; }
-        public Logger(EventFiringWebDriver driver)
+        public Logger()
         {
-            Driver = driver;
             Driver.ExceptionThrown += Driver_ExceptionThrown;
         }
 

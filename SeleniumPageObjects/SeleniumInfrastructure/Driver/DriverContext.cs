@@ -1,10 +1,9 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
+﻿using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Logging;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public static class DriverContext
+    public abstract class DriverContext
     {
         private static EventFiringWebDriver _driver;
 
@@ -34,7 +33,7 @@ namespace SeleniumFramework.SeleniumInfrastructure
             get
             {
                 
-                _logger = new Logger(Driver);
+                _logger = new Logger();
                 return _logger;
             }
             set { _logger = value; }

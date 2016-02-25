@@ -1,19 +1,12 @@
-﻿using OpenQA.Selenium.Support.Events;
-using SeleniumFramework.SeleniumInfrastructure.Logging;
-using System;
+﻿using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public class Browser
-    {
-        
-        private EventFiringWebDriver Driver { get; }
-        private Logger Logger { get; }
-
+    public class Browser : DriverContext
+    {     
         internal Browser()
         {
-            Driver = DriverContext.Driver;
-            Logger = DriverContext.Logger;        
+            Logger = Logger;
         }
                
         private  BrowserType Type { get; }

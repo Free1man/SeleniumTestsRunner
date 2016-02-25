@@ -8,7 +8,7 @@ namespace SeleniumFramework.PageObjects.Google
     public class GoogleMainPage : BasePageObject
     { 
         
-        [FindsBy(How = How.Name, Using = "q")]
+        [FindsBy(How = How.Name, Using = "q1")]
         public IWebElement txtSearch { get; set; }
                 
         public void Search (string textToSearch)
