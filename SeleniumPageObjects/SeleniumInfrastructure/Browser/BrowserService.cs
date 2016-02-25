@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 
 namespace SeleniumFramework.SeleniumInfrastructure
@@ -12,16 +13,17 @@ namespace SeleniumFramework.SeleniumInfrastructure
             switch (browserType)
             {
                 case Browser.BrowserType.Firefox:
-                    DriverContext.Driver = DriverService.GetBrowserForDriver(browserType.ToString());
+                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));
                     break;
                 case Browser.BrowserType.Chrome:
-                    DriverContext.Driver = DriverService.GetBrowserForDriver(browserType.ToString());            
+                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));            
                     break;
                 case Browser.BrowserType.ReadFromAppConfig:
-                    DriverContext.Driver = DriverService.GetBrowserForDriver(Settings.Browser);
+                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(Settings.Browser));
                     break;               
             }
 
         }
+
     }
 }

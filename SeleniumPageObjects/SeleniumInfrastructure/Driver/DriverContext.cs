@@ -1,13 +1,13 @@
 ﻿using OpenQA.Selenium;
-
+using OpenQA.Selenium.Support.Events;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
     public static class DriverContext
     {
-        private static IWebDriver _driver;
+        private static EventFiringWebDriver _driver;
 
-        internal static IWebDriver Driver
+        internal static EventFiringWebDriver Driver
         {
             get { return _driver; }
             set { _driver = value; }
@@ -18,11 +18,12 @@ namespace SeleniumFramework.SeleniumInfrastructure
  
         public static Browser Browser
         {
-             get {
-                    _browser = new Browser();
-                     return _browser;
-                 }
-             set { _browser = value; }
-         }
+            get
+            {
+                _browser = new Browser();
+                return _browser;
+            }
+            set { _browser = value; }
+        }
     }
 }
