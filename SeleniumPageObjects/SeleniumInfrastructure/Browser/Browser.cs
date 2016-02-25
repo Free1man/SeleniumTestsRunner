@@ -1,24 +1,22 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
+﻿using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Logging;
 using System;
-using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
     public class Browser
     {
         
-        private EventFiringWebDriver Driver { get; set; }
-        public Logger Logger { get; set; }
+        private EventFiringWebDriver Driver { get; }
+        private Logger Logger { get; }
 
         internal Browser()
         {
             Driver = DriverContext.Driver;
-            Logger = new Logger(Driver);
+            Logger = DriverContext.Logger;        
         }
                
-        private  BrowserType Type { get; set; }
+        private  BrowserType Type { get; }
 
         public enum BrowserType
         {
@@ -27,17 +25,17 @@ namespace SeleniumFramework.SeleniumInfrastructure
             ReadFromAppConfig
         }
 
-        public  void GoToUrl(string url)
+        public void GoToUrl(string url)
         {
             Driver.Url = url;
         }
 
-        public  void Quit()
+        public void Quit()
         {
             Driver.Quit();
         }
 
-        public  void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
+        public void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
         {
             Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }

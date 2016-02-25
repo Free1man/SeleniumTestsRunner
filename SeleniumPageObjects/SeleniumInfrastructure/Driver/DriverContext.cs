@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
+using SeleniumFramework.SeleniumInfrastructure.Logging;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
@@ -25,5 +26,20 @@ namespace SeleniumFramework.SeleniumInfrastructure
             }
             set { _browser = value; }
         }
+
+        private static Logger _logger;
+
+        public static Logger Logger
+        {
+            get
+            {
+                
+                _logger = new Logger(Driver);
+                return _logger;
+            }
+            set { _logger = value; }
+        }
+
+
     }
 }
