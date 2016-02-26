@@ -53,9 +53,10 @@
   <ItemGroup>
     <Compile Include="PageObjects\Google\GoogleMainPage.cs" />
     <Compile Include="PageObjects\Google\GoogleTranslatePage.cs" />
+    <Compile Include="SeleniumInfrastructure\Browser\IBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
     <Compile Include="SeleniumInfrastructure\Driver\DriverService.cs" />
-    <Compile Include="SeleniumInfrastructure\Logging\Logger.cs" />
+    <Compile Include="SeleniumInfrastructure\Browser\LoggingBrowser.cs" />
     <Compile Include="SeleniumInfrastructure\PageObject\BasePageObject.cs" />
     <Compile Include="SeleniumInfrastructure\Browser\Browser.cs" />
     <Compile Include="SeleniumInfrastructure\Driver\DriverContext.cs" />

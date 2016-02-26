@@ -1,16 +1,11 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
+using System;
 
-namespace SeleniumFramework.SeleniumInfrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class Browser : DriverContext
-    {     
-        internal Browser()
-        {
-            Logger = Logger;
-        }
-               
-        private  BrowserType Type { get; }
-
+    public class Browser
+    {
         public enum BrowserType
         {
             Firefox,
@@ -18,20 +13,29 @@ namespace SeleniumFramework.SeleniumInfrastructure
             ReadFromAppConfig
         }
 
+        internal EventFiringWebDriver Driver { get; set; }
+
+        internal Browser(EventFiringWebDriver driver)
+        {
+            this.Driver = driver;
+        }
+
         public void GoToUrl(string url)
         {
-            Driver.Url = url;
+            this.Driver.Url = url;
         }
 
         public void Quit()
         {
-            Driver.Quit();
+            this.Driver.Quit();
         }
 
         public void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
         {
-            Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
+            this.Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }
+
+        protected BrowserType _browserType;
 
     }
 }

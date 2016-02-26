@@ -1,5 +1,6 @@
 ﻿using SeleniumFramework.PageObjects.Google;
 using SeleniumFramework.SeleniumInfrastructure;
+using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 using TechTalk.SpecFlow;
 
@@ -11,15 +12,16 @@ namespace SpecflowTestExample
         [BeforeScenario]
         public void BeforeScenario()
         {
-            BrowserService.OpenBrowser(Browser.BrowserType.ReadFromAppConfig);
-            DriverContext.Browser.GoToUrl(Settings.Url);
-            DriverContext.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            DriverContext.Instance.SetBrowser(Browser.BrowserType.ReadFromAppConfig);
+            DriverContext.Instance.Browser.GoToUrl(Settings.Url);
+            DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            DriverContext.Browser.Quit();
+            DriverContext.Instance.Browser.Quit();
         }
       
         [When(@"I type (.*) to search text field")]

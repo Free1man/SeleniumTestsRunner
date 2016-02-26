@@ -1,44 +1,42 @@
-﻿using OpenQA.Selenium.Support.Events;
-using SeleniumFramework.SeleniumInfrastructure.Logging;
+﻿using SeleniumFramework.SeleniumInfrastructure.Browsers;
 
 namespace SeleniumFramework.SeleniumInfrastructure
 {
-    public abstract class DriverContext
+    public class DriverContext
     {
-        private static EventFiringWebDriver _driver;
-
-        internal static EventFiringWebDriver Driver
+        private static DriverContext _instance;
+        private DriverContext(IBrowserService browserService)
         {
-            get { return _driver; }
-            set { _driver = value; }
+            _browserService = browserService;
         }
 
-
-        private static Browser _browser;
- 
-        public static Browser Browser
+        public static DriverContext Instance
         {
             get
             {
-                _browser = new Browser();
-                return _browser;
+                if (_instance == null)
+                {
+                    _instance = new DriverContext(new BrowserService());
+                }
+
+                return _instance;
             }
-            set { _browser = value; }
         }
 
-        private static Logger _logger;
+        public Browser Browser { get { return _browser; } }
 
-        public static Logger Logger
+        public Browser SetBrowser(Browser.BrowserType browserType)
         {
-            get
-            {
-                
-                _logger = new Logger();
-                return _logger;
-            }
-            set { _logger = value; }
+            return SetBrowser(browserType, false);
         }
 
+        public Browser SetBrowser(Browser.BrowserType browserType, bool useLogging)
+        {
+            _browser = _browserService.GetBrowser(browserType, useLogging);
+            return _browser;
+        }
 
+        private Browser _browser;
+        private IBrowserService _browserService;
     }
 }

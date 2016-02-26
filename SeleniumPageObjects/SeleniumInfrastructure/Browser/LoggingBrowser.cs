@@ -3,13 +3,13 @@ using System;
 using System.Drawing.Imaging;
 
 
-namespace SeleniumFramework.SeleniumInfrastructure.Logging
+namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class Logger : DriverContext
+    public class LoggingBrowser : Browser
     {
-        public Logger()
+        internal LoggingBrowser(EventFiringWebDriver driver) : base(driver)
         {
-            Driver.ExceptionThrown += Driver_ExceptionThrown;
+            this.Driver.ExceptionThrown += Driver_ExceptionThrown;
         }
 
         private void Driver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)

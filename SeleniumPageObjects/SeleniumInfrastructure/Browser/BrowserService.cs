@@ -1,27 +1,37 @@
-﻿using OpenQA.Selenium.Support.Events;
+﻿using System;
+using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 
-namespace SeleniumFramework.SeleniumInfrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    static public class BrowserService
+    internal class BrowserService : IBrowserService
     {
-
-        public static void OpenBrowser(Browser.BrowserType browserType)
+        public Browser GetBrowser(Browser.BrowserType browserType)
         {
-            switch (browserType)
-            {
-                case Browser.BrowserType.Firefox:
-                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));
-                    break;
-                case Browser.BrowserType.Chrome:
-                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));            
-                    break;
-                case Browser.BrowserType.ReadFromAppConfig:
-                    DriverContext.Driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(Settings.Browser));
-                    break;               
-            }
-
+            return GetBrowser(browserType, false);
         }
 
+        public Browser GetBrowser(Browser.BrowserType browserType, bool useLogging)
+        {
+            EventFiringWebDriver driver = null;
+            if (browserType == Browser.BrowserType.Firefox || browserType == Browser.BrowserType.Chrome)
+            {
+                driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));
+            } else if (browserType == Browser.BrowserType.ReadFromAppConfig)
+            {
+                driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(Settings.Browser));
+            } else
+            {
+                throw new ArgumentException("Browser type invalid");
+            }
+
+            if (useLogging)
+            {
+                return new LoggingBrowser(driver);
+            } else
+            {
+                return new Browser(driver);
+            }
+        }
     }
 }
