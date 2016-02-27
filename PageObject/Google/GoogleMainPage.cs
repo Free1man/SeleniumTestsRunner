@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumFramework.SeleniumInfrastructure.PageObject;
 
-namespace SeleniumFramework.PageObjects.Google 
+namespace PageObject.Google 
 {   
 
     public class GoogleMainPage : BasePageObject

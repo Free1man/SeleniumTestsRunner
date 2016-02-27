@@ -52,9 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PageObject\PageObject.csproj">
+      <Project>{f5f37f68-932a-4ee3-863e-24a40a50d91e}</Project>
+      <Name>PageObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeleniumPageObjects\SeleniumFramework.csproj">
       <Project>{6fb4c3b6-0348-4365-bf1a-e23707343cea}</Project>
       <Name>SeleniumFramework</Name>
