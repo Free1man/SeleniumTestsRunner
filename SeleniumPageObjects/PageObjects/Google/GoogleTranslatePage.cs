@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using SeleniumFramework.SeleniumInfrastructure;
+using SeleniumFramework.SeleniumInfrastructure.PageObject;
 
 namespace SeleniumFramework.PageObjects.Google
 {

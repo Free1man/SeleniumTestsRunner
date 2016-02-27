@@ -1,7 +1,7 @@
 ﻿using SeleniumFramework.PageObjects.Google;
-using SeleniumFramework.SeleniumInfrastructure;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
+using SeleniumFramework.SeleniumInfrastructure.Driver;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample

@@ -1,10 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.PhantomJS;
-using System;
 
-namespace SeleniumFramework.SeleniumInfrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.Driver
 {
     public static class DriverService
     {

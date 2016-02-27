@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SeleniumFramework.PageObjects.Google;
-using SeleniumFramework.SeleniumInfrastructure;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
+using SeleniumFramework.SeleniumInfrastructure.Driver;
 
 namespace MSTestExample
 {
@@ -13,7 +13,7 @@ namespace MSTestExample
         [TestInitialize]
         public void TestInitialize()
         {
-            DriverContext.Instance.SetBrowser(Browser.BrowserType.ReadFromAppConfig, true);
+            DriverContext.Instance.SetBrowser(Browser.BrowserType.Firefox, true);
             DriverContext.Instance.Browser.GoToUrl(Settings.Url);
             DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }

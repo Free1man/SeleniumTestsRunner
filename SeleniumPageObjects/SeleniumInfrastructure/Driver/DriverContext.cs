@@ -1,6 +1,6 @@
 ﻿using SeleniumFramework.SeleniumInfrastructure.Browsers;
 
-namespace SeleniumFramework.SeleniumInfrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.Driver
 {
     public class DriverContext
     {
@@ -12,18 +12,10 @@ namespace SeleniumFramework.SeleniumInfrastructure
 
         public static DriverContext Instance
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new DriverContext(new BrowserService());
-                }
-
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new DriverContext(new BrowserService())); }
         }
 
-        public Browser Browser { get { return _browser; } }
+        public Browser Browser { get; private set; }
 
         public Browser SetBrowser(Browser.BrowserType browserType)
         {
@@ -32,11 +24,10 @@ namespace SeleniumFramework.SeleniumInfrastructure
 
         public Browser SetBrowser(Browser.BrowserType browserType, bool useLogging)
         {
-            _browser = _browserService.GetBrowser(browserType, useLogging);
-            return _browser;
+            Browser = _browserService.GetBrowser(browserType, useLogging);
+            return Browser;
         }
 
-        private Browser _browser;
-        private IBrowserService _browserService;
+        private readonly IBrowserService _browserService;
     }
 }
