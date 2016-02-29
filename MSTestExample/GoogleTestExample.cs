@@ -15,7 +15,7 @@ namespace MSTestExample
         {
             DriverContext.Instance.SetBrowser(Browser.BrowserType.Firefox, true);
             DriverContext.Instance.Browser.GoToUrl(Settings.Url);
-            DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            //DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
         }
 
         [TestCleanup]

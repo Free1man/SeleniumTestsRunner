@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Support.Events;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
 using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
@@ -12,9 +13,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             ReadFromAppConfig
         }
 
-        internal EventFiringWebDriver Driver { get; set; }
+        internal IWebDriver Driver { get; set; }
 
-        internal Browser(EventFiringWebDriver driver)
+        internal Browser(IWebDriver driver)
         {
             this.Driver = driver;
         }

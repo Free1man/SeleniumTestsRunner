@@ -1,7 +1,9 @@
 ﻿using System;
-using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.Driver;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.PhantomJS;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -14,15 +16,15 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 
         public Browser GetBrowser(Browser.BrowserType browserType, bool useLogging)
         {
-            EventFiringWebDriver driver = null;
+            IWebDriver driver = null;
             switch (browserType)
             {
                 case Browser.BrowserType.Firefox:
                 case Browser.BrowserType.Chrome:
-                    driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(browserType.ToString()));
+                    driver = GetBrowserForDriver(browserType.ToString());
                     break;
                 case Browser.BrowserType.ReadFromAppConfig:
-                    driver = new EventFiringWebDriver(DriverService.GetBrowserForDriver(Settings.Browser));
+                    driver = GetBrowserForDriver(Settings.Browser);
                     break;
                 default:
                     throw new ArgumentException("Browser type invalid");
@@ -30,5 +32,20 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 
             return useLogging ? new LoggingBrowser(driver) : new Browser(driver);
         }
+        
+        public IWebDriver GetBrowserForDriver(string browser)
+        {
+            switch (browser)
+            {
+                case "Firefox":
+                    return new FirefoxDriver();
+                case "Chrome":
+                    return new ChromeDriver();
+                case "PhantomJS":
+                    return new PhantomJSDriver();
+                default:
+                    throw new ArgumentException(browser + "- Not supported browser");
+            }
+        }       
     }
 }
