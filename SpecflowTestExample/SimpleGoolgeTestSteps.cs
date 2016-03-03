@@ -1,7 +1,9 @@
-﻿using PageObject.Google;
+﻿using NUnit.Framework;
+using PageObject.Google;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.Driver;
+using SeleniumFramework.SpecflowContext;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
@@ -12,9 +14,17 @@ namespace SpecflowTestExample
         [BeforeScenario]
         public void BeforeScenario()
         {
-            DriverContext.Instance.SetBrowser(Browser.BrowserType.ReadFromAppConfig);
+            DriverContext.Instance.SetBrowser(Browser.BrowserType.ReadFromAppConfig, true);
             DriverContext.Instance.Browser.GoToUrl(Settings.Url);
-            DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            //DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+
+
+
+
+
+
+            CurrentTestContext.SetTestName(TestContext.CurrentContext.Test.Name);
+
 
         }
 
@@ -22,6 +32,8 @@ namespace SpecflowTestExample
         public void AfterScenario()
         {
             DriverContext.Instance.Browser.Quit();
+            CurrentTestContext.SetTestOutcome(TestContext.CurrentContext.Result.Outcome.Status.ToString());
+           
         }
       
         [When(@"I type (.*) to search text field")]
