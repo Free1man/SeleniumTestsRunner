@@ -1,57 +1,42 @@
 ﻿using System;
 using System.Configuration;
-
+using System.IO;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
-    public static class Settings
+    public class Settings
     {
-
-        private static string _browser;
-
-        public static string Browser
+        public Settings()
         {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_browser))
-                {
-                    _browser = ConfigurationManager.AppSettings["DefaultBrowser"];
-                }
-                return _browser;
-            }
-            set
-            {
-                _browser = value;
+            Initialise();
+        }            
+
+        private void Initialise()
+        {
+            Url = ConfigurationManager.AppSettings["DefaultUrl"];
+            if (string.IsNullOrEmpty(Url)) {
+                throw new InvalidOperationException("DefaultUrl must be set in Configuration");
             }
 
+            Browser = ConfigurationManager.AppSettings["DefaultBrowser"];
+            if (string.IsNullOrWhiteSpace(Browser))
+            {
+                throw new InvalidOperationException("DefaultBrowser must be set in Configuration");
+            }
+
+            TestFolder = "D:\\wall\\" + DateTime.Now.ToString("yyyy-MM-dd");
         }
 
-        private static string _url;
+        public string Browser { get; private set; }
+        public string Url { get; private set; }
+        public string TestFolder { get; private set; }
 
-        public static string Url
+        private TimeSpan _implicitWaitTime;
+        public TimeSpan ImplicitWaitTime
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(_url))
-                {
-                    _url = ConfigurationManager.AppSettings["DefaultUrl"];
-                }
-                return _url;
-            }
-            set
-            {
-                _url = value;
-            }
-
-        }
-
-        private static TimeSpan _implicitWaitTime;
-
-        public static TimeSpan ImplicitWaitTime
-        {
-            get
-            {
-                if (_implicitWaitTime != null)
+                if (_implicitWaitTime == null)
                 {
                     _implicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
                 }
@@ -61,7 +46,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
             {
                 _implicitWaitTime = value;
             }
-
         }
     }
 }

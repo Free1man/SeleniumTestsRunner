@@ -9,12 +9,12 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
     internal class BrowserService : IBrowserService
     {
-        public Browser GetBrowser(Browser.BrowserType browserType)
+        public BrowserService(Settings settings)
         {
-            return GetBrowser(browserType, false);
+            _settings = settings;
         }
 
-        public Browser GetBrowser(Browser.BrowserType browserType, bool useLogging)
+        public Browser GetBrowser(Browser.BrowserType browserType)
         {
             IWebDriver driver = null;
             switch (browserType)
@@ -24,16 +24,16 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                     driver = GetBrowserForDriver(browserType.ToString());
                     break;
                 case Browser.BrowserType.ReadFromAppConfig:
-                    driver = GetBrowserForDriver(Settings.Browser);
+                    driver = GetBrowserForDriver(_settings.Browser);
                     break;
                 default:
                     throw new ArgumentException("Browser type invalid");
             }
 
-            return useLogging ? new LoggingBrowser(driver) : new Browser(driver);
+            return new Browser(driver);
         }
         
-        public IWebDriver GetBrowserForDriver(string browser)
+        private IWebDriver GetBrowserForDriver(string browser)
         {
             switch (browser)
             {
@@ -46,6 +46,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                 default:
                     throw new ArgumentException(browser + "- Not supported browser");
             }
-        }       
+        }
+
+        private Settings _settings;
     }
 }

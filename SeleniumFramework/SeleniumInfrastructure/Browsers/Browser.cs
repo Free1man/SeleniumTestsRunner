@@ -36,6 +36,5 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         }
 
         protected BrowserType _browserType;
-
     }
 }

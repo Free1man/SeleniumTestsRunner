@@ -14,18 +14,14 @@ namespace SpecflowTestExample
         [BeforeScenario]
         public void BeforeScenario()
         {
-            DriverContext.Instance.SetBrowser(Browser.BrowserType.ReadFromAppConfig, true);
-            DriverContext.Instance.Browser.GoToUrl(Settings.Url);
-            //DriverContext.Instance.Browser.SetImplicitlyWaitTime(Settings.ImplicitWaitTime);
+            DriverContext context = DriverContext.Instance;
+            Settings settings = context.Settings;
+            context.SetBrowser(Browser.BrowserType.Firefox, true);
+            context.Browser.GoToUrl(settings.Url);
 
-
-
-
-
+            context.Browser.SetImplicitlyWaitTime(settings.ImplicitWaitTime);
 
             CurrentTestContext.SetTestName(TestContext.CurrentContext.Test.Name);
-
-
         }
 
         [AfterScenario]

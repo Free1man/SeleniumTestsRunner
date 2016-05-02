@@ -57,7 +57,10 @@
   <ItemGroup>
     <Compile Include="SeleniumInfrastructure\Browsers\IBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\LoggingBrowser.cs" />
+    <Compile Include="SeleniumInfrastructure\Infrastructure\InfrastructureService.cs" />
+    <Compile Include="SeleniumInfrastructure\Infrastructure\IInfrastructureService.cs" />
+    <Compile Include="SeleniumInfrastructure\Logging\LoggingService.cs" />
+    <Compile Include="SeleniumInfrastructure\Logging\ILoggingService.cs" />
     <Compile Include="SeleniumInfrastructure\PageObject\BasePageObject.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\Browser.cs" />
     <Compile Include="SeleniumInfrastructure\Driver\DriverContext.cs" />
