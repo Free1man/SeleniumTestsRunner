@@ -8,7 +8,7 @@ namespace PageObject.Google
     public class GoogleMainPage : BasePageObject
     { 
         
-        [FindsBy(How = How.Name, Using = "q1")]
+        [FindsBy(How = How.Name, Using = "q")]
         public IWebElement txtSearch { get; set; }
                 
         public void Search (string textToSearch)

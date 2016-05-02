@@ -58,9 +58,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\PageObject\PageObject.csproj">
       <Project>{f5f37f68-932a-4ee3-863e-24a40a50d91e}</Project>
       <Name>PageObject</Name>

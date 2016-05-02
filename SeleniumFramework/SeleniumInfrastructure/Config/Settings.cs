@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.IO;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
@@ -24,7 +23,11 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
                 throw new InvalidOperationException("DefaultBrowser must be set in Configuration");
             }
 
-            TestFolder = "D:\\wall\\" + DateTime.Now.ToString("yyyy-MM-dd");
+            TestFolder = ConfigurationManager.AppSettings["TestFolder"] + DateTime.Now.ToString("yyyy-MM-dd-hhmm");
+            if (string.IsNullOrWhiteSpace(TestFolder))
+            {
+                throw new InvalidOperationException("TestFolder must be set in Configuration");
+            }
         }
 
         public string Browser { get; private set; }

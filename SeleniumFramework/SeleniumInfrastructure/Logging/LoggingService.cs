@@ -1,9 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using System;
 using OpenQA.Selenium.Support.Events;
 using RelevantCodes.ExtentReports;
 using SeleniumFramework.SpecflowContext;
-using System;
-using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
@@ -15,24 +13,22 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
 
             _eventFiringDriver = new EventFiringWebDriver(browser.Driver);
             _eventFiringDriver.ExceptionThrown += Driver_ExceptionThrown;
-
+            
             browser.Driver = _eventFiringDriver;
         }
 
+
         private void Driver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
         {
-            string timestamp = DateTime.Now.ToString("yyyy-MM-dd");
-            string fileName = "Exception-" + timestamp + ".png";
-            _eventFiringDriver.GetScreenshot().SaveAsFile(fileName, ImageFormat.Png);
-            GenerateReport(fileName);
+            var Screenshot = _eventFiringDriver.GetScreenshot().AsBase64EncodedString;
+            AddScreenshotToReport(Screenshot);
         }
 
-        private void GenerateReport(string fileName)
+        private void AddScreenshotToReport(string Screenshot)
         {
-            var report = new ExtentReports(_testFolder + "\\testReprot.html");
+            var report = new ExtentReports(_testFolder + "\\testReprot.html", false);
             var test = report.StartTest(CurrentTestContext.TestName, "");
-            test.Log(LogStatus.Fail, "Snapshot below: " + test.AddScreenCapture(_testFolder + "\\" + fileName));
-            test.AddScreencast(_testFolder);
+            test.Log(LogStatus.Fail, "Snapshot below: " + test.AddBase64ScreenCapture("data: image / png; base64," + Screenshot));
             report.EndTest(test);
             report.Flush();
             report.Close();
