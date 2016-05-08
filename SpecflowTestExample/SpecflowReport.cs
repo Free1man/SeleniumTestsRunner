@@ -71,20 +71,9 @@ namespace SpecflowTestExample
         [AfterStep]
         public void AfterStepR()
         {
-            var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stepname = ScenarioStepContext.Current.StepInfo.Text;
-            LogStatus logstatus;
-            switch (status)
-            {
-                case TestStatus.Failed:
-                    logstatus = LogStatus.Fail;
-                    break;
-              default:
-                    logstatus = LogStatus.Pass;
-                    break;
-            }
-
-            test.Log(logstatus, stepname);
+            
+            test.Log(LogStatus.Info, stepname);
 
             report.EndTest(test);
             report.Flush();

@@ -65,7 +65,7 @@ namespace SpecflowTestExample
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Google Search example test")]
-        [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate1", new string[0])]
         [NUnit.Framework.TestCaseAttribute("test", "Speedtest.net by Ookla - The Global Broadband Speed Test", new string[0])]
         [NUnit.Framework.TestCaseAttribute("testing", "Software testing - Wikipedia, the free encyclopedia1", new string[0])]
         public virtual void GoogleSearchExampleTest(string textToSearch, string results, string[] exampleTags)
@@ -74,9 +74,9 @@ namespace SpecflowTestExample
 #line 4
 this.ScenarioSetup(scenarioInfo);
 #line 5
- testRunner.When(string.Format("I type {0} to search text field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I type {0} in the Search field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
- testRunner.Then(string.Format("in text results i should see {0}", results), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I should see {0} on the webpage", results), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

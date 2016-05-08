@@ -26,14 +26,14 @@ namespace SpecflowTestExample
             DriverContext.Instance.Browser.Quit();
         }
       
-        [When(@"I type (.*) to search text field")]
+        [When(@"I type (.*) in the Search field")]
         public void WhenITypeToSearchTextField(string textToSearch)
         {
             var googleManiPage = new GoogleMainPage();
             googleManiPage.Search(textToSearch);     
         }
 
-        [Then(@"in text results i should see (.*)")]
+        [Then(@"I should see (.*) on the webpage")]
         public void ThenInTextResultsIShouldSee(string results)
         {
             var googleManiPage = new GoogleMainPage();
