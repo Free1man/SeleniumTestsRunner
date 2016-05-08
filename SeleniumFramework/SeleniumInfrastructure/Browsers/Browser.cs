@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
 using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers

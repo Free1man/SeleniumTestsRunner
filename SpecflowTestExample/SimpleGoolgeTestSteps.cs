@@ -1,15 +1,13 @@
-﻿using NUnit.Framework;
-using PageObject.Google;
+﻿using PageObject.Google;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.Driver;
-using SeleniumFramework.SpecflowContext;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
 {
     [Binding]
-    public sealed class SimpleGoolgeTestSteps
+    public sealed class SimpleGoolgeTestSteps : ExtentBase
     {
         [BeforeScenario]
         public void BeforeScenario()
@@ -20,16 +18,12 @@ namespace SpecflowTestExample
             context.Browser.GoToUrl(settings.Url);
 
             context.Browser.SetImplicitlyWaitTime(settings.ImplicitWaitTime);
-
-            CurrentTestContext.SetTestName(TestContext.CurrentContext.Test.Name);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
             DriverContext.Instance.Browser.Quit();
-            CurrentTestContext.SetTestOutcome(TestContext.CurrentContext.Result.Outcome.Status.ToString());
-           
         }
       
         [When(@"I type (.*) to search text field")]

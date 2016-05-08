@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PageObject.Google;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
-using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.Driver;
 
 namespace MSTestExample

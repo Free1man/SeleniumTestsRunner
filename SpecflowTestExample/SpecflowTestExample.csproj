@@ -34,6 +34,10 @@
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RelevantCodes.ExtentReports, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtentReports.2.41.0-beta2\lib\RelevantCodes.ExtentReports.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="TechTalk.SpecFlow, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecFlow.2.0.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
@@ -48,6 +52,7 @@
       <DependentUpon>SimpleGoolgeTest.feature</DependentUpon>
     </Compile>
     <Compile Include="SimpleGoolgeTestSteps.cs" />
+    <Compile Include="SpecflowReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
