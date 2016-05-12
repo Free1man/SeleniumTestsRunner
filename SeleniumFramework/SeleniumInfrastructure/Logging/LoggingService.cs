@@ -1,7 +1,5 @@
-﻿using System;
-using OpenQA.Selenium.Support.Events;
-using RelevantCodes.ExtentReports;
-
+﻿using OpenQA.Selenium.Support.Events;
+using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
@@ -21,18 +19,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
 
         private void Driver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
         {
-            var Screenshot = _eventFiringDriver.GetScreenshot().AsBase64EncodedString;
-            AddScreenshotToReport(Screenshot);
-        }
-
-        private void AddScreenshotToReport(string Screenshot)
-        {
-            var report = new ExtentReports(_testFolder + "\\SeleniumReprot.html", false);
-            var test = report.StartTest(DateTime.Now.ToString("yyyy-MM-dd-hhmm"), "");
-            test.Log(LogStatus.Fail, "Snapshot below: " + test.AddBase64ScreenCapture("data: image / png; base64," + Screenshot));
-            report.EndTest(test);
-            report.Flush();
-            report.Close();
+            //Save screenshot for use by external reporting tool.
+            _eventFiringDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
         }
 
         private string _testFolder;

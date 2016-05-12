@@ -39,7 +39,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
         {
             get
             {
-                if (_implicitWaitTime == null)
+                if (_implicitWaitTime == TimeSpan.Zero)
                 {
                     _implicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
                 }
