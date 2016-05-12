@@ -43,16 +43,12 @@ namespace SpecflowTestExample
         public void AfterScenarioR()
         {
             var status = TestContext.CurrentContext.Result.Outcome.Status;
-            var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
-                ? ""
-                : string.Format("<pre>{0}</pre>", TestContext.CurrentContext.Result.StackTrace);
             LogStatus logstatus;
 
             switch (status)
             {
                 case TestStatus.Failed:
                     logstatus = LogStatus.Fail;
-                    AddScreenshotToReport();
                     break;
                 case TestStatus.Inconclusive:
                     logstatus = LogStatus.Warning;
@@ -65,9 +61,8 @@ namespace SpecflowTestExample
                     break;
             }
 
-            test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
-
-            report.EndTest(test);
+            test.Log(logstatus, "Test ended with " + logstatus);
+            test.EndTime = DateTime.Now;
             report.Flush();
         }
 
@@ -79,6 +74,9 @@ namespace SpecflowTestExample
             if (ScenarioContext.Current.TestError != null)
             {
                 test.Log(LogStatus.Fail, stepname);
+                AddScreenshotToReport();
+                test.Log(LogStatus.Fail, ScenarioContext.Current.TestError);
+                
 
                 report.EndTest(test);
                 report.Flush();
@@ -113,7 +111,10 @@ namespace SpecflowTestExample
 
                 screenshot.Dispose();
                 File.Delete(screenshotPath);
-
+            }
+            else
+            {
+                    test.Log(LogStatus.Fail, "No screenshot to attach");
             }         
         }
     }
