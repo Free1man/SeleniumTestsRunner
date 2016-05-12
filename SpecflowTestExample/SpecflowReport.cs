@@ -76,11 +76,21 @@ namespace SpecflowTestExample
         {
             var stepname = ScenarioStepContext.Current.StepInfo.Text;
 
-            test.Log(LogStatus.Info, stepname);
+            if (ScenarioContext.Current.TestError != null)
+            {
+                test.Log(LogStatus.Fail, stepname);
 
-            report.EndTest(test);
-            report.Flush();
+                report.EndTest(test);
+                report.Flush();
+            }
+            else
+            {
+                test.Log(LogStatus.Pass, stepname);
 
+                report.EndTest(test);
+                report.Flush();
+
+            }
         }
 
         private void AddScreenshotToReport()

@@ -7,6 +7,6 @@ Scenario Outline: Google Search example test
 
 	Examples: 
 	| textToSearch     | results                                                  |
-	| google translate | Google Translate1                                         |
+	| google translate | Google Translate1                                        |
 	| test             | Speedtest.net by Ookla - The Global Broadband Speed Test |
-	| testing          | Software testing - Wikipedia, the free encyclopedia1      |
+	| testing          | Software testing - Wikipedia, the free encyclopedia1     |
