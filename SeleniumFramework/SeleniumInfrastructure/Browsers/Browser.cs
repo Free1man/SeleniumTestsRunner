@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -27,11 +26,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         public void Quit()
         {
             this.Driver.Quit();
-        }
-
-        public void SetImplicitlyWaitTime(TimeSpan licitlyWaitTime)
-        {
-            this.Driver.Manage().Timeouts().ImplicitlyWait(licitlyWaitTime);
         }
 
         protected BrowserType _browserType;

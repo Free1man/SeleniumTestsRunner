@@ -32,11 +32,13 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
             ImplicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
             if (ImplicitWaitTime == TimeSpan.Zero)
             {
-                throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration ");
+                throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration");
             }
 
+            UseLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);        
         }
 
+        public bool UseLogging { get; private set; }
         public string Browser { get; private set; }
         public string Url { get; private set; }
         public string TestFolder { get; private set; }

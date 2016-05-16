@@ -38,19 +38,13 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
 
         public Browser Browser { get; private set; }
 
-        public Browser SetBrowser(Browser.BrowserType browserType)
-        {
-            return SetBrowser(browserType, false);
-        }
-
-        public Browser SetBrowser(Browser.BrowserType browserType, bool useLogging)
+        public Browser SetBrowser(Browser.BrowserType browserType = Browser.BrowserType.ReadFromAppConfig)
         {
             Browser = _browserService.GetBrowser(browserType);
-            if (useLogging)
+            if (Settings.UseLogging)
             {
                 var logger = new LoggingService(Browser, Settings.TestFolder);
             }
-
             return Browser;
         }
 

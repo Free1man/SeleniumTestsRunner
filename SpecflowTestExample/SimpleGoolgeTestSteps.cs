@@ -1,6 +1,5 @@
 ﻿using PageObject.Google;
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
-using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.Driver;
 using TechTalk.SpecFlow;
 
@@ -9,21 +8,19 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps : ExtentBase
     {
+        DriverContext context = DriverContext.Instance;
+
         [BeforeScenario]
         public void BeforeScenario()
-        {
-            DriverContext context = DriverContext.Instance;
-            Settings settings = context.Settings;
-            context.SetBrowser(Browser.BrowserType.Firefox, true);
-            context.Browser.GoToUrl(settings.Url);
-
-            context.Browser.SetImplicitlyWaitTime(settings.ImplicitWaitTime);
+        {                    
+            context.SetBrowser(Browser.BrowserType.Firefox);
+            context.Browser.GoToUrl(context.Settings.Url);           
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            DriverContext.Instance.Browser.Quit();
+            context.Browser.Quit();
         }
       
         [When(@"I type (.*) in the Search field")]
