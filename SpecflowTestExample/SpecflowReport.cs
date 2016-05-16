@@ -36,7 +36,7 @@ namespace SpecflowTestExample
         public void BeforeScenarioR()
         {
             report = ExtentManager.Instance;
-            test = report.StartTest(TestContext.CurrentContext.Test.Name, "");
+            test = report.StartTest(TestContext.CurrentContext.Test.Name, FeatureContext.Current.FeatureInfo.Description);
         }
 
         [AfterScenario]

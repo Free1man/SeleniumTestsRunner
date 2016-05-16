@@ -28,27 +28,19 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
             {
                 throw new InvalidOperationException("TestFolder must be set in Configuration");
             }
+
+            ImplicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
+            if (ImplicitWaitTime == TimeSpan.Zero)
+            {
+                throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration ");
+            }
+
         }
 
         public string Browser { get; private set; }
         public string Url { get; private set; }
         public string TestFolder { get; private set; }
-
-        private TimeSpan _implicitWaitTime;
-        public TimeSpan ImplicitWaitTime
-        {
-            get
-            {
-                if (_implicitWaitTime == TimeSpan.Zero)
-                {
-                    _implicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
-                }
-                return _implicitWaitTime;
-            }
-            set
-            {
-                _implicitWaitTime = value;
-            }
-        }
+        public TimeSpan ImplicitWaitTime { get; private set; }     
+        
     }
 }
