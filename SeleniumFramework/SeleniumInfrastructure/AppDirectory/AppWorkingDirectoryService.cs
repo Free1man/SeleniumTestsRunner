@@ -1,11 +1,11 @@
 ﻿using SeleniumFramework.SeleniumInfrastructure.Config;
 using System.IO;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Infrastructure
+namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
 {
-    public class InfrastructureService : IInfrastructureService
+    public class AppWorkingDirectoryService : IAppWorkingDirectoryService
     {
-        public InfrastructureService(Settings settings)
+        public AppWorkingDirectoryService(Settings settings)
         {
             _settings = settings;
         }

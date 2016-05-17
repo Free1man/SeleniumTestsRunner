@@ -55,17 +55,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SeleniumInfrastructure\Browsers\Browser.cs" />
+    <Compile Include="SeleniumInfrastructure\Browsers\BrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\IBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
-    <Compile Include="SeleniumInfrastructure\Infrastructure\InfrastructureService.cs" />
-    <Compile Include="SeleniumInfrastructure\Infrastructure\IInfrastructureService.cs" />
+    <Compile Include="SeleniumInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />
+    <Compile Include="SeleniumInfrastructure\AppDirectory\IAppWorkingDirectoryService.cs" />
     <Compile Include="SeleniumInfrastructure\Logging\LoggingService.cs" />
     <Compile Include="SeleniumInfrastructure\Logging\ILoggingService.cs" />
     <Compile Include="SeleniumInfrastructure\PageObject\BasePageObject.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\Browser.cs" />
     <Compile Include="SeleniumInfrastructure\Driver\DriverContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\BrowserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

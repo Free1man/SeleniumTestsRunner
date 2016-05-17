@@ -1,6 +1,6 @@
 ﻿using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.Infrastructure;
+using SeleniumFramework.SeleniumInfrastructure.AppDirectory;
 using SeleniumFramework.SeleniumInfrastructure.Logging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Driver
@@ -9,13 +9,13 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
     {
         private static DriverContext _instance;
         
-        private DriverContext(IBrowserService browserService, Settings settings, IInfrastructureService infrastructureService)
+        private DriverContext(IBrowserService browserService, Settings settings, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
             _browserService = browserService;
             Settings = settings;
-            _infrastructureService = infrastructureService;
+            _appWorkingDirectoryService = appWorkingDirectoryService;
 
-            _infrastructureService.SetCurrentDirectory();
+            _appWorkingDirectoryService.SetCurrentDirectory();
         }
 
         public static DriverContext Instance
@@ -26,9 +26,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
                 {
                     var settings = new Settings();
                     var browserService = new BrowserService(settings);
-                    var infrastructureService = new InfrastructureService(settings);
+                    var appWorkingDirectoryService = new AppWorkingDirectoryService(settings);
 
-                   _instance = new DriverContext(browserService, settings, infrastructureService);                    
+                   _instance = new DriverContext(browserService, settings, appWorkingDirectoryService);                    
                 }
                 return _instance;
             }
@@ -49,6 +49,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
         }
 
         private readonly IBrowserService _browserService;
-        private readonly IInfrastructureService _infrastructureService;
+        private readonly IAppWorkingDirectoryService _appWorkingDirectoryService;
     }
 }
