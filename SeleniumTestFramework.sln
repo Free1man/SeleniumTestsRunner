@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTestExample", "MSTestExample\MSTestExample.csproj", "{6E0EB013-4598-4112-9081-D378BD25F85D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecflowTestExample", "SpecflowTestExample\SpecflowTestExample.csproj", "{D7974585-4113-4470-BF59-C5757116E4B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObject", "PageObject\PageObject.csproj", "{F5F37F68-932A-4EE3-863E-24A40A50D91E}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E0EB013-4598-4112-9081-D378BD25F85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E0EB013-4598-4112-9081-D378BD25F85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E0EB013-4598-4112-9081-D378BD25F85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E0EB013-4598-4112-9081-D378BD25F85D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
