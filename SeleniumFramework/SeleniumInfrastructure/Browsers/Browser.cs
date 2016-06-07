@@ -8,7 +8,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         {
             Firefox,
             Chrome,
-            ReadFromAppConfig
+            ReadFromSettings
         }
 
         internal IWebDriver Driver { get; set; }

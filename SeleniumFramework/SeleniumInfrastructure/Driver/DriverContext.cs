@@ -38,7 +38,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
 
         public Browser Browser { get; private set; }
 
-        public Browser SetBrowser(Browser.BrowserType browserType = Browser.BrowserType.ReadFromAppConfig)
+        public Browser SetBrowser(Browser.BrowserType browserType = Browser.BrowserType.ReadFromSettings)
         {
             Browser = _browserService.GetBrowser(browserType);
             if (Settings.UseLogging)

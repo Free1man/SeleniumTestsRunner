@@ -67,7 +67,7 @@ namespace SpecflowTestExample
         [NUnit.Framework.DescriptionAttribute("Google Search example test")]
         [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate1", new string[0])]
         [NUnit.Framework.TestCaseAttribute("test", "Speedtest.net by Ookla - The Global Broadband Speed Test", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("testing", "Software testing - Wikipedia, the free encyclopedia1", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("testing", "Software testing - Wikipedia, the free encyclopedia", new string[0])]
         public virtual void GoogleSearchExampleTest(string textToSearch, string results, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Google Search example test", exampleTags);

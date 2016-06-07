@@ -23,13 +23,14 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                 case Browser.BrowserType.Chrome:
                     driver = GetBrowserForDriver(browserType.ToString());
                     break;
-                case Browser.BrowserType.ReadFromAppConfig:
+                case Browser.BrowserType.ReadFromSettings:
                     driver = GetBrowserForDriver(_settings.Browser);
                     break;
                 default:
                     throw new ArgumentException("Browser type invalid");
             }
-
+            //TO DO consider to move this to other place.
+            driver.Manage().Timeouts().ImplicitlyWait(_settings.ImplicitWaitTime);
             return new Browser(driver);
         }
         
