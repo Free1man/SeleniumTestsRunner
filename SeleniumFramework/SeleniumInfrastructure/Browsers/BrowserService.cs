@@ -16,7 +16,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 
         public Browser GetBrowser(Browser.BrowserType browserType)
         {
-            IWebDriver driver = null;
+            IWebDriver driver;
             switch (browserType)
             {
                 case Browser.BrowserType.Firefox:
@@ -29,8 +29,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                 default:
                     throw new ArgumentException("Browser type invalid");
             }
-            //TO DO consider to move this to other place.
-            driver.Manage().Timeouts().ImplicitlyWait(_settings.ImplicitWaitTime);
             return new Browser(driver);
         }
         

@@ -13,8 +13,7 @@ namespace SpecflowTestExample
         [BeforeScenario]
         public void BeforeScenario()
         {                    
-            context.SetBrowser(Browser.BrowserType.Firefox);
-            context.Browser.GoToUrl(context.Settings.Url);           
+            context.SetBrowser(Browser.BrowserType.Firefox);        
         }
 
         [AfterScenario]

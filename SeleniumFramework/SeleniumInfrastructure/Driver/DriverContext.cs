@@ -12,10 +12,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
         private DriverContext(IBrowserService browserService, Settings settings, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
             _browserService = browserService;
-            Settings = settings;
-            _appWorkingDirectoryService = appWorkingDirectoryService;
-
-            _appWorkingDirectoryService.SetCurrentDirectory();
+            _settings = settings;
+            appWorkingDirectoryService.SetCurrentDirectory();
         }
 
         public static DriverContext Instance
@@ -34,21 +32,22 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
             }
         }
 
-        public Settings Settings;
-
         public Browser Browser { get; private set; }
 
         public Browser SetBrowser(Browser.BrowserType browserType = Browser.BrowserType.ReadFromSettings)
         {
             Browser = _browserService.GetBrowser(browserType);
+            Browser.Driver.Manage().Timeouts().ImplicitlyWait(_settings.ImplicitWaitTime);
+            Browser.Driver.Url = _settings.Url;
+
             if (Settings.UseLogging)
             {
-                var logger = new LoggingService(Browser, Settings.TestFolder);
+                var logger = new LoggingService(Browser);
             }
             return Browser;
         }
 
         private readonly IBrowserService _browserService;
-        private readonly IAppWorkingDirectoryService _appWorkingDirectoryService;
+        private readonly Settings _settings;
     }
 }

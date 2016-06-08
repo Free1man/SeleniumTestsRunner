@@ -6,9 +6,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
     public class LoggingService : ILoggingService
     {
         //TO DO: Will be used for advanced logging
-        public LoggingService(Browsers.Browser browser, string testFolder)
+        public LoggingService(Browsers.Browser browser)
         {
-            _testFolder = testFolder;
 
             _eventFiringDriver = new EventFiringWebDriver(browser.Driver);
             _eventFiringDriver.ExceptionThrown += Driver_ExceptionThrown;
@@ -23,7 +22,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
             _eventFiringDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
         }
 
-        private string _testFolder;
         private EventFiringWebDriver _eventFiringDriver;
     }
 }

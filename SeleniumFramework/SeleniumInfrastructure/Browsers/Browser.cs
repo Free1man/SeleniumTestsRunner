@@ -18,7 +18,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             this.Driver = driver;
         }
 
-        public void GoToUrl(string url)
+        public void Url(string url)
         {
             this.Driver.Url = url;
         }
