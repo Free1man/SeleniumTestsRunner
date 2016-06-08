@@ -38,7 +38,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
             UseLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);        
         }
 
-        public static bool UseLogging { get; private set; }
+        public bool UseLogging { get; private set; }
         public string Browser { get; private set; }
         public string Url { get; private set; }
         public string TestFolder { get; private set; }

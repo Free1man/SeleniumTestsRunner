@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="SeleniumInfrastructure\Browsers\Browser.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\BrowserService.cs" />
+    <Compile Include="SeleniumInfrastructure\Browsers\BrowserSettingsService.cs" />
+    <Compile Include="SeleniumInfrastructure\Browsers\DriverForBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\IBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
     <Compile Include="SeleniumInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />

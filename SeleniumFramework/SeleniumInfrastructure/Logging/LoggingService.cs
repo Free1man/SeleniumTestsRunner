@@ -11,7 +11,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
 
             _eventFiringDriver = new EventFiringWebDriver(browser.Driver);
             _eventFiringDriver.ExceptionThrown += Driver_ExceptionThrown;
-            
+            //TO DO: unclear logic - fix that later
             browser.Driver = _eventFiringDriver;
         }
 

@@ -10,7 +10,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
         
         private DriverContext(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
-            _browserService = browserService;         
+            _browserService = browserService;
             appWorkingDirectoryService.SetCurrentDirectory();
         }
 
@@ -22,13 +22,15 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
                 {
                     var settings = new Settings();
                     var browserService = new BrowserService(settings);
-                    var appWorkingDirectoryService = new AppWorkingDirectoryService(settings);
+                    var appWorkingDirectoryService = new AppWorkingDirectoryService(settings.TestFolder);
 
                    _instance = new DriverContext(browserService, appWorkingDirectoryService);                    
                 }
                 return _instance;
             }
         }
+
+        public Settings Settings;
 
         public Browser Browser { get; private set; }
 

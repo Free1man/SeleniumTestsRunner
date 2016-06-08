@@ -1,21 +1,20 @@
-﻿using SeleniumFramework.SeleniumInfrastructure.Config;
-using System.IO;
+﻿using System.IO;
 
 namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
 {
     public class AppWorkingDirectoryService : IAppWorkingDirectoryService
     {
-        public AppWorkingDirectoryService(Settings settings)
+        public AppWorkingDirectoryService(string workingDirectoryPath)
         {
-            _settings = settings;
+            _workingDirectoryPath = workingDirectoryPath;
         }
 
         public void SetCurrentDirectory()
         {
-            Directory.CreateDirectory(_settings.TestFolder);
-            Directory.SetCurrentDirectory(_settings.TestFolder);
+            Directory.CreateDirectory(_workingDirectoryPath);
+            Directory.SetCurrentDirectory(_workingDirectoryPath);
         }
 
-        private Settings _settings;
+        private string _workingDirectoryPath;
     }
 }
