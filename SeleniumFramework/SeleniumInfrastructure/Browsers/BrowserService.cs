@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
+using SeleniumFramework.SeleniumInfrastructure.Logging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -21,18 +22,31 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             {
                 case Browser.BrowserType.Firefox:
                 case Browser.BrowserType.Chrome:
-                    driver = GetBrowserForDriver(browserType.ToString());
+                    driver = GetDriverForBrowser(browserType.ToString());
                     break;
                 case Browser.BrowserType.ReadFromSettings:
-                    driver = GetBrowserForDriver(_settings.Browser);
+                    driver = GetDriverForBrowser(_settings.Browser);
                     break;
                 default:
                     throw new ArgumentException("Browser type invalid");
             }
+
+            SetBrowserSettings(driver);
             return new Browser(driver);
         }
-        
-        private IWebDriver GetBrowserForDriver(string browser)
+
+        private void SetBrowserSettings(IWebDriver driver)
+        {
+            driver.Manage().Timeouts().ImplicitlyWait(_settings.ImplicitWaitTime);
+            driver.Url = _settings.Url;
+
+            if (Settings.UseLogging)
+            {
+                var logger = new LoggingService(new Browser(driver));
+            }
+        }
+
+        private IWebDriver GetDriverForBrowser(string browser)
         {
             switch (browser)
             {

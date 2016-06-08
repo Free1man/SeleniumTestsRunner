@@ -1,7 +1,6 @@
 ﻿using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.AppDirectory;
-using SeleniumFramework.SeleniumInfrastructure.Logging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Driver
 {
@@ -9,10 +8,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
     {
         private static DriverContext _instance;
         
-        private DriverContext(IBrowserService browserService, Settings settings, IAppWorkingDirectoryService appWorkingDirectoryService)
+        private DriverContext(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
-            _browserService = browserService;
-            _settings = settings;
+            _browserService = browserService;         
             appWorkingDirectoryService.SetCurrentDirectory();
         }
 
@@ -26,7 +24,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
                     var browserService = new BrowserService(settings);
                     var appWorkingDirectoryService = new AppWorkingDirectoryService(settings);
 
-                   _instance = new DriverContext(browserService, settings, appWorkingDirectoryService);                    
+                   _instance = new DriverContext(browserService, appWorkingDirectoryService);                    
                 }
                 return _instance;
             }
@@ -37,17 +35,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
         public Browser SetBrowser(Browser.BrowserType browserType = Browser.BrowserType.ReadFromSettings)
         {
             Browser = _browserService.GetBrowser(browserType);
-            Browser.Driver.Manage().Timeouts().ImplicitlyWait(_settings.ImplicitWaitTime);
-            Browser.Driver.Url = _settings.Url;
-
-            if (Settings.UseLogging)
-            {
-                var logger = new LoggingService(Browser);
-            }
             return Browser;
         }
 
         private readonly IBrowserService _browserService;
-        private readonly Settings _settings;
     }
 }
