@@ -25,10 +25,12 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                     break;
             }
 
-            var browserSettingsService = new BrowserSettingsService(driver, _settings);
-            browserSettingsService.SetBrowserSettings();
+            var browserSettingsService = new BrowserSettingsService();
+            browserSettingsService.SetBrowserSettings(driver, _settings);
+
             return new Browser(driver);
         }
+
         private Settings _settings;
     }
 }
