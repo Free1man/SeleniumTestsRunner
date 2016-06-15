@@ -7,9 +7,9 @@ using OpenQA.Selenium.Remote;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class DriverForBrowserService
+    public class DriverService
     {
-        public IWebDriver GetDriverForBrowser(string browser)
+        public IWebDriver GetDriver(string browser)
         {
             switch (browser)
             {

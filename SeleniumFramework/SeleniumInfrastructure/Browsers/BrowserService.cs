@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Config;
+using SeleniumFramework.SeleniumInfrastructure.Logging;
+using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -19,7 +21,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             if (_settings.UseLogging)
             {
                 //Don't like this code, but it is really important to wrap driver here, or it will not work with SeleniumGrid
-                driver = new EventFiringWebDriver(SelectDriver(browserType));
+                var loggingService = new LoggingService();
+                driver = loggingService.EnableLoggingForDriver(SelectDriver(browserType));
+
             }
             else
             {
@@ -32,18 +36,19 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             return new Browser(driver);
         }
 
+        
         private IWebDriver SelectDriver(Browser.BrowserType browserType)
         {
             IWebDriver driver;
-            var driverForBrowserService = new DriverForBrowserService();
+            var driverService = new DriverService();
 
             switch (browserType)
             {
                 default:
-                    driver = driverForBrowserService.GetDriverForBrowser(browserType.ToString());
+                    driver = driverService.GetDriver(browserType.ToString());
                     break;
                 case Browser.BrowserType.ReadFromSettings:
-                    driver = driverForBrowserService.GetDriverForBrowser(_settings.Browser);
+                    driver = driverService.GetDriver(_settings.Browser);
                     break;
             }
             return driver;

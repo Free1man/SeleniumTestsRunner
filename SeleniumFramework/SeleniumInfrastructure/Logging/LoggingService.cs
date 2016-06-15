@@ -1,25 +1,25 @@
 ﻿using System.Drawing.Imaging;
 using OpenQA.Selenium.Support.Events;
-using SeleniumFramework.SeleniumInfrastructure.Browsers;
+using OpenQA.Selenium;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
     public class LoggingService : ILoggingService
     {
-        private readonly EventFiringWebDriver _eventFiringDriver;
-        //TO DO: Will be used for advanced logging
-        public LoggingService(Browser browser)
+        private EventFiringWebDriver loggingDriver;       
+
+        public IWebDriver EnableLoggingForDriver(IWebDriver driver)
         {
-            _eventFiringDriver = new EventFiringWebDriver(browser.Driver);
-            _eventFiringDriver.ExceptionThrown += Driver_ExceptionThrown;
-            //TO DO: unclear logic - fix that later
+            loggingDriver = new EventFiringWebDriver(driver);
+            driver = loggingDriver;
+            loggingDriver.ExceptionThrown += LoggingDriver_ExceptionThrown;
+            return driver;
         }
 
-
-        private void Driver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
+        private void LoggingDriver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
         {
-            //Save screenshot for use by external reporting tool.
-            _eventFiringDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
+            loggingDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
         }
+
     }
 }
