@@ -8,12 +8,19 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
         public Settings()
         {
             Initialise();
-        }            
+        }
+
+        public bool UseLogging { get; private set; }
+        public string Browser { get; private set; }
+        public string Url { get; private set; }
+        public string TestFolder { get; private set; }
+        public TimeSpan ImplicitWaitTime { get; private set; }
 
         private void Initialise()
         {
             Url = ConfigurationManager.AppSettings["DefaultUrl"];
-            if (string.IsNullOrEmpty(Url)) {
+            if (string.IsNullOrEmpty(Url))
+            {
                 throw new InvalidOperationException("DefaultUrl must be set in Configuration");
             }
 
@@ -29,20 +36,14 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
                 throw new InvalidOperationException("TestFolder must be set in Configuration");
             }
 
-            ImplicitWaitTime = TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
+            ImplicitWaitTime =
+                TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
             if (ImplicitWaitTime == TimeSpan.Zero)
             {
                 throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration");
             }
 
-            UseLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);        
+            UseLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);
         }
-
-        public bool UseLogging { get; private set; }
-        public string Browser { get; private set; }
-        public string Url { get; private set; }
-        public string TestFolder { get; private set; }
-        public TimeSpan ImplicitWaitTime { get; private set; }     
-        
     }
 }

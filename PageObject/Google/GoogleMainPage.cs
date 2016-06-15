@@ -2,16 +2,14 @@
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumFramework.SeleniumInfrastructure.PageObject;
 
-namespace PageObject.Google 
-{   
-
+namespace PageObject.Google
+{
     public class GoogleMainPage : BasePageObject
-    { 
-        
+    {
         [FindsBy(How = How.Name, Using = "q")]
         public IWebElement txtSearch { get; set; }
-                
-        public void Search (string textToSearch)
+
+        public void Search(string textToSearch)
         {
             txtSearch.SendKeys(textToSearch);
             txtSearch.SendKeys(Keys.Enter);
@@ -27,6 +25,5 @@ namespace PageObject.Google
         {
             var linkToCheck = Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
         }
-
     }
 }

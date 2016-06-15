@@ -1,13 +1,17 @@
-﻿using SeleniumFramework.SeleniumInfrastructure.Browsers;
+﻿using SeleniumFramework.SeleniumInfrastructure.AppDirectory;
+using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.AppDirectory;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Driver
 {
     public class DriverContext
     {
         private static DriverContext _instance;
-        
+
+        private readonly IBrowserService _browserService;
+
+        public Settings Settings;
+
         private DriverContext(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
             _browserService = browserService;
@@ -24,13 +28,11 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
                     var browserService = new BrowserService(settings);
                     var appWorkingDirectoryService = new AppWorkingDirectoryService(settings.TestFolder);
 
-                   _instance = new DriverContext(browserService, appWorkingDirectoryService);                    
+                    _instance = new DriverContext(browserService, appWorkingDirectoryService);
                 }
                 return _instance;
             }
         }
-
-        public Settings Settings;
 
         public Browser Browser { get; private set; }
 
@@ -39,7 +41,5 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
             Browser = _browserService.GetBrowser(browserType);
             return Browser;
         }
-
-        private readonly IBrowserService _browserService;
     }
 }

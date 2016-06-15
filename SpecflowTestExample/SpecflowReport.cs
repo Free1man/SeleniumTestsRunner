@@ -1,29 +1,25 @@
-﻿using System.IO;
+﻿using System;
+using System.Drawing;
+using System.IO;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using RelevantCodes.ExtentReports;
 using TechTalk.SpecFlow;
-using System.Drawing;
-using System;
 
 namespace SpecflowTestExample
 {
     internal class ExtentManager
-    {      
-        private static readonly ExtentReports _instance =
-            new ExtentReports(Directory.GetCurrentDirectory() + "\\ExtentReports.html", DisplayOrder.OldestFirst);
-
-        static ExtentManager() { }
-
-        private ExtentManager() { }
-
-        public static ExtentReports Instance
+    {
+        static ExtentManager()
         {
-            get
-            {
-                return _instance;
-            }
         }
+
+        private ExtentManager()
+        {
+        }
+
+        public static ExtentReports Instance { get; } =
+            new ExtentReports(Directory.GetCurrentDirectory() + "\\ExtentReports.html", DisplayOrder.OldestFirst);
     }
 
     public abstract class ExtentBase
@@ -76,7 +72,7 @@ namespace SpecflowTestExample
                 test.Log(LogStatus.Fail, stepname);
                 AddScreenshotToReport();
                 test.Log(LogStatus.Fail, ScenarioContext.Current.TestError);
-                
+
 
                 report.EndTest(test);
                 report.Flush();
@@ -87,26 +83,26 @@ namespace SpecflowTestExample
 
                 report.EndTest(test);
                 report.Flush();
-
             }
         }
 
         private void AddScreenshotToReport()
         {
-           
             var screenshotPath = Directory.GetCurrentDirectory() + "\\" + "failScreenshot.png";
-           
+
             if (File.Exists(screenshotPath))
             {
                 Image screenshot = new Bitmap(screenshotPath);
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
                     // Convert Image to byte[]
                     screenshot.Save(ms, screenshot.RawFormat);
-                    byte[] imageBytes = ms.ToArray();
+                    var imageBytes = ms.ToArray();
 
                     // Add screenshot to report
-                    test.Log(LogStatus.Fail, "Snapshot below: " + test.AddBase64ScreenCapture("data: image / png; base64," + Convert.ToBase64String(imageBytes)));
+                    test.Log(LogStatus.Fail,
+                        "Snapshot below: " +
+                        test.AddBase64ScreenCapture("data: image / png; base64," + Convert.ToBase64String(imageBytes)));
                 }
 
                 screenshot.Dispose();
@@ -114,8 +110,8 @@ namespace SpecflowTestExample
             }
             else
             {
-                    test.Log(LogStatus.Fail, "No screenshot to attach");
-            }         
+                test.Log(LogStatus.Fail, "No screenshot to attach");
+            }
         }
     }
 }

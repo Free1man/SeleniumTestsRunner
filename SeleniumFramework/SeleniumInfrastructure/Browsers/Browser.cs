@@ -11,23 +11,23 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             ReadFromSettings
         }
 
-        internal IWebDriver Driver { get; set; }
+        protected BrowserType _browserType;
 
         internal Browser(IWebDriver driver)
         {
-            this.Driver = driver;
+            Driver = driver;
         }
+
+        internal IWebDriver Driver { get; set; }
 
         public void Url(string url)
         {
-            this.Driver.Url = url;
+            Driver.Url = url;
         }
 
         public void Quit()
         {
-            this.Driver.Quit();
+            Driver.Quit();
         }
-
-        protected BrowserType _browserType;
     }
 }

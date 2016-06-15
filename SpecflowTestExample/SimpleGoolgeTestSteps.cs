@@ -1,5 +1,4 @@
 ﻿using PageObject.Google;
-using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Driver;
 using TechTalk.SpecFlow;
 
@@ -8,12 +7,12 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps : ExtentBase
     {
-        DriverContext context = DriverContext.Instance;
+        private readonly DriverContext context = DriverContext.Instance;
 
         [BeforeScenario]
         public void BeforeScenario()
-        {                    
-            context.SetBrowser();        
+        {
+            context.SetBrowser();
         }
 
         [AfterScenario]
@@ -21,12 +20,12 @@ namespace SpecflowTestExample
         {
             context.Browser.Quit();
         }
-      
+
         [When(@"I type (.*) in the Search field")]
         public void WhenITypeToSearchTextField(string textToSearch)
         {
             var googleManiPage = new GoogleMainPage();
-            googleManiPage.Search(textToSearch);     
+            googleManiPage.Search(textToSearch);
         }
 
         [Then(@"I should see (.*) on the webpage")]
@@ -35,6 +34,5 @@ namespace SpecflowTestExample
             var googleManiPage = new GoogleMainPage();
             googleManiPage.CheckLinkPresence(results);
         }
-
     }
 }

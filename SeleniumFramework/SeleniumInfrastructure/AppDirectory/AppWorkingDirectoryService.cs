@@ -4,6 +4,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
 {
     public class AppWorkingDirectoryService : IAppWorkingDirectoryService
     {
+        private readonly string _workingDirectoryPath;
+
         public AppWorkingDirectoryService(string workingDirectoryPath)
         {
             _workingDirectoryPath = workingDirectoryPath;
@@ -14,7 +16,5 @@ namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
             Directory.CreateDirectory(_workingDirectoryPath);
             Directory.SetCurrentDirectory(_workingDirectoryPath);
         }
-
-        private string _workingDirectoryPath;
     }
 }
