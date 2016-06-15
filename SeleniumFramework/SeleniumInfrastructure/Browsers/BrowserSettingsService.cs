@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.Logging;
+
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -12,11 +12,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             driver.Manage().Timeouts().ImplicitlyWait(settings.ImplicitWaitTime);
 
             driver.Url = settings.Url;
-
-            if (settings.UseLogging)
-            {
-                var logger = new LoggingService(new Browser(driver));
-            }
         }
     }
 }
