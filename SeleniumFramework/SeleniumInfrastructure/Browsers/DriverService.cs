@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Remote;
+using System.IO;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -14,7 +15,12 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             switch (browser)
             {
                 case "Firefox":
-                    return new FirefoxDriver();
+                    //TO DO: hotfix for Firefox 47, should be refactored, all parameters should go to app.config
+                    FirefoxOptions option1 = new FirefoxOptions();
+                    //Copy wires.exe file to output directory or this code will fail.
+                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
+                    service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    return new FirefoxDriver(service, option1, TimeSpan.FromSeconds(10));
                 case "Chrome":
                     return new ChromeDriver();
                 case "PhantomJS":
