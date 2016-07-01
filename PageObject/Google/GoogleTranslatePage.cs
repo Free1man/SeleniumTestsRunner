@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumFramework.SeleniumInfrastructure.PageObject;
 
-namespace PageObject.Google
+namespace PageObjects.Google
 {
     public class GoogleTranslatePage : BasePageObject
     {

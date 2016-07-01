@@ -1,5 +1,5 @@
-﻿using PageObject.Google;
-using SeleniumFramework.SeleniumInfrastructure.Driver;
+﻿using PageObjects.Google;
+using SeleniumFramework.SeleniumInfrastructure.Runner;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
@@ -7,18 +7,18 @@ namespace SpecflowTestExample
     [Binding]
     public sealed class SimpleGoolgeTestSteps : ExtentBase
     {
-        private readonly DriverContext context = DriverContext.Instance;
+        private readonly SeleniumDriverRunner _runner = SeleniumDriverRunner.Instance;
 
         [BeforeScenario]
         public void BeforeScenario()
         {
-            context.SetBrowser();
+            _runner.SetBrowser();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            context.Browser.Quit();
+            _runner.Browser.Quit();
         }
 
         [When(@"I type (.*) in the Search field")]

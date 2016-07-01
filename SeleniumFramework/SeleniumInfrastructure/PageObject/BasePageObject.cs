@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using SeleniumFramework.SeleniumInfrastructure.Driver;
+using SeleniumFramework.SeleniumInfrastructure.Runner;
 
 namespace SeleniumFramework.SeleniumInfrastructure.PageObject
 {
@@ -11,6 +11,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.PageObject
             PageFactory.InitElements(Driver, this);
         }
 
-        public IWebDriver Driver => DriverContext.Instance.Browser.Driver;
+        public IWebDriver Driver => SeleniumDriverRunner.Instance.Browser.Driver;
     }
 }

@@ -2,23 +2,23 @@
 using SeleniumFramework.SeleniumInfrastructure.Browsers;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Driver
+namespace SeleniumFramework.SeleniumInfrastructure.Runner
 {
-    public class DriverContext
+    public class SeleniumDriverRunner
     {
-        private static DriverContext _instance;
+        private static SeleniumDriverRunner _instance;
 
         private readonly IBrowserService _browserService;
 
         public Settings Settings;
 
-        private DriverContext(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
+        private SeleniumDriverRunner(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
             _browserService = browserService;
             appWorkingDirectoryService.SetCurrentDirectory();
         }
 
-        public static DriverContext Instance
+        public static SeleniumDriverRunner Instance
         {
             get
             {
@@ -28,7 +28,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Driver
                     var browserService = new BrowserService(settings);
                     var appWorkingDirectoryService = new AppWorkingDirectoryService(settings.TestFolder);
 
-                    _instance = new DriverContext(browserService, appWorkingDirectoryService);
+                    _instance = new SeleniumDriverRunner(browserService, appWorkingDirectoryService);
                 }
                 return _instance;
             }

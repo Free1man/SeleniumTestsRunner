@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
 using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.Logging;
-using System.Drawing.Imaging;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
@@ -21,7 +19,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             if (_settings.UseLogging)
             {
                 //Don't like this code, but it is really important to wrap driver here, or it will not work with SeleniumGrid
-                var loggingService = new LoggingService();
+                ILoggingService loggingService = new LoggingService();
                 driver = loggingService.EnableLoggingForDriver(SelectDriver(browserType));
 
             }
