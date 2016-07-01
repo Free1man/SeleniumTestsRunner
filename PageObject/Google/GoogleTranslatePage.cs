@@ -1,5 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+using SeleniumFramework.SeleniumInfrastructure.Config;
 using SeleniumFramework.SeleniumInfrastructure.PageObject;
 
 namespace PageObjects.Google
@@ -20,13 +23,9 @@ namespace PageObjects.Google
 
         public string GetTranslationsResult()
         {
-            var result = "";
-            //TO DO: Fix this    
-            while (string.IsNullOrWhiteSpace(result))
-            {
-                result = txtTranslationsResult.Text;
-            }
-            return result;
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(3));
+            wait.Until(driver => txtTranslationsResult.Text.Length > 0 ? txtTranslationsResult : null);
+            return txtTranslationsResult.Text;
         }
     }
 }

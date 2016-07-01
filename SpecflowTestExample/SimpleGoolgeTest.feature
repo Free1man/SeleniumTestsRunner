@@ -11,3 +11,14 @@ Scenario Outline: Google Search example test
 	| google translate | Google Translate1                                        |
 	| test             | Speedtest.net by Ookla - The Global Broadband Speed Test |
 	| testing          | Software testing - Wikipedia, the free encyclopedia      |
+
+
+Scenario Outline: Google Translate example test
+	When I type <textToSearch> in the Search field 
+	And I click <linkToclick> link 
+	And I trying to translate <wordToTranslate>
+	Then I should see <translationResults> 
+	Examples: 
+	| textToSearch     | linkToclick      | wordToTranslate | translationResults |
+	| google translate | Google Translate | test            | test               |
+
