@@ -96,7 +96,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 19
  testRunner.And(string.Format("I trying to translate {0}", wordToTranslate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
- testRunner.Then(string.Format("I should see {0}", translationResults), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I should see {0} on transaltion page", translationResults), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

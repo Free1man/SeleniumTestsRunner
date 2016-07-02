@@ -50,7 +50,7 @@ namespace SpecflowTestExample
             googleTranslatePage.TransalteText(textToTranslate);
         }
 
-        [Then(@"I should see (.*)")]
+        [Then(@"I should see (.*) on transaltion page")]
         public void ThenIShouldSee(string translationResult)
         {
             var googleTranslatePage = new GoogleTranslatePage();

@@ -3,7 +3,7 @@
 
 Scenario Outline: Google Search example test
 	When I type <textToSearch> in the Search field 
-	Then I should see <results> on the webpage
+	Then I should see <results> on the webpage 
 
 	# first test will fail - for demo
 	Examples: 
@@ -17,7 +17,7 @@ Scenario Outline: Google Translate example test
 	When I type <textToSearch> in the Search field 
 	And I click <linkToclick> link 
 	And I trying to translate <wordToTranslate>
-	Then I should see <translationResults> 
+	Then I should see <translationResults> on transaltion page
 	Examples: 
 	| textToSearch     | linkToclick      | wordToTranslate | translationResults |
 	| google translate | Google Translate | test            | test               |
