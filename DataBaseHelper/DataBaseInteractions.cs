@@ -14,12 +14,13 @@ namespace DataBaseHelper
 
         private string CreateSqlStringRestoreDatabase()
         {
-            
-            var sqlString = @"
-            ALTER DATABASE " + dataBaseSettings.DataBaseName + @" SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-            DROP DATABASE " + dataBaseSettings.DataBaseName + @"
-            RESTORE DATABASE " + dataBaseSettings.DataBaseName + @"
-            FROM DISK = '" + dataBaseSettings.PathToDataBase + dataBaseSettings.DataBaseName + @".bak'
+            var dataBaseName = dataBaseSettings.DataBaseName;
+            var pathToDataBase = dataBaseSettings.PathToDataBase;
+            var sqlString = $@"
+            ALTER DATABASE { dataBaseName } SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+            DROP DATABASE { dataBaseName }
+            RESTORE DATABASE { dataBaseName }
+            FROM DISK = '{ pathToDataBase }/{ dataBaseName }.bak'
             WITH REPLACE";
 
             return sqlString;
