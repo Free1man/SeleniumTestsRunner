@@ -7,10 +7,10 @@ namespace PageObjects.Google
     public class GoogleTranslatePage : BasePageObject
     {
         [FindsBy(How = How.Id, Using = "source")]
-        public IWebElement txtSourceText { get; set; }
+        private IWebElement txtSourceText { get; set; }
 
         [FindsBy(How = How.Id, Using = "result_box")]
-        public IWebElement txtTranslationsResult { get; set; }
+        private IWebElement txtTranslationsResult { get; set; }
 
 
         public void TransalteText(string textToTranslate)

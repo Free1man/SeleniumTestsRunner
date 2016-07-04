@@ -17,8 +17,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
                     //TO DO: hotfix for Firefox 47, should be refactored, all parameters should go to app.config
                     FirefoxOptions option1 = new FirefoxOptions();
                     //Copy wires.exe file to output directory or this code will fail.
-                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
-                    service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+                    string path = AppDomain.CurrentDomain.BaseDirectory;
+                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(path, "wires.exe");
+                    service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
                     return new FirefoxDriver(service, option1, TimeSpan.FromSeconds(10));
                 case "Chrome":
                     return new ChromeDriver();
