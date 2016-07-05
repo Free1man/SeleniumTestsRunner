@@ -21,9 +21,9 @@ namespace PageObjects.Google
             linkToClick.Click();
         }
 
-        public void CheckLinkPresence(string linkToCheckText)
+        public bool CheckLinkPresence(string linkToCheckText)
         {
-            var linkToCheck = Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
+            return Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
         }
     }
 }
