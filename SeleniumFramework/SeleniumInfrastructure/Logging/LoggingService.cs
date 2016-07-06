@@ -9,7 +9,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
         private EventFiringWebDriver loggingDriver;       
 
         public IWebDriver EnableLoggingForDriver(IWebDriver driver)
-        {
+        {   
             loggingDriver = new EventFiringWebDriver(driver);
             driver = loggingDriver;
             loggingDriver.ExceptionThrown += LoggingDriver_ExceptionThrown;

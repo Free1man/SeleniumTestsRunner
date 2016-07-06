@@ -11,6 +11,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
         }
 
         public bool UseLogging { get; private set; }
+        public bool UseRemoteBrowser { get; private set; }
         public string Browser { get; private set; }
         public string Url { get; private set; }
         public string TestFolder { get; private set; }
@@ -24,6 +25,8 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
                 throw new InvalidOperationException("DefaultUrl must be set in Configuration");
             }
 
+            UseRemoteBrowser = Convert.ToBoolean(ConfigurationManager.AppSettings["UseRemoteBrowser"]);
+           
             Browser = ConfigurationManager.AppSettings["DefaultBrowser"];
             if (string.IsNullOrWhiteSpace(Browser))
             {

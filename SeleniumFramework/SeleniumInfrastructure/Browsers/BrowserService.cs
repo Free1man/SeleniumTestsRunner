@@ -16,18 +16,15 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         public Browser GetBrowser(Browser.BrowserType browserType)
         {
             IWebDriver driver;
+
+            driver = SelectDriver(browserType);
+
             if (_settings.UseLogging)
             {
-                ILoggingService loggingService = new LoggingService();
-                driver = SelectDriver(browserType);
+                ILoggingService loggingService = new LoggingService();             
                 driver = loggingService.EnableLoggingForDriver(driver);
-
             }
-            else
-            {
-                driver = SelectDriver(browserType);
-            }
-
+      
             var browserSettingsService = new BrowserSettingsService();
             browserSettingsService.SetBrowserSettings(driver, _settings);
 
@@ -38,8 +35,16 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         private IWebDriver SelectDriver(Browser.BrowserType browserType)
         {
             IWebDriver driver;
-            var driverService = new DriverService();
-
+            IDriverService driverService;
+            if (_settings.UseRemoteBrowser)
+            {
+                driverService = new RemoteDriverService();
+            }
+            else
+            {
+                driverService = new DriverService();
+            }
+           
             switch (browserType)
             {
                 default:
