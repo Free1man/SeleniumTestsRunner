@@ -18,9 +18,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             IWebDriver driver;
             if (_settings.UseLogging)
             {
-                //Don't like this code, but it is really important to wrap driver here, or it will not work with SeleniumGrid
                 ILoggingService loggingService = new LoggingService();
-                driver = loggingService.EnableLoggingForDriver(SelectDriver(browserType));
+                driver = SelectDriver(browserType);
+                driver = loggingService.EnableLoggingForDriver(driver);
 
             }
             else
