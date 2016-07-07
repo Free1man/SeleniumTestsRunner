@@ -15,14 +15,16 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 
         public Browser GetBrowser(Browser.BrowserType browserType)
         {
-            IWebDriver driver;
-
-            driver = SelectDriver(browserType);
+            IWebDriver driver;         
 
             if (_settings.UseLogging)
             {
                 ILoggingService loggingService = new LoggingService();             
-                driver = loggingService.EnableLoggingForDriver(driver);
+                driver = loggingService.EnableLoggingForDriver(SelectDriver(browserType));
+            }
+            else
+            {
+                driver = SelectDriver(browserType);
             }
       
             var browserSettingsService = new BrowserSettingsService();
