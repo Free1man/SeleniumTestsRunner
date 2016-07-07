@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
-    public class LoggingService : ILoggingService
+    internal class LoggingService : ILoggingService
     {
         private EventFiringWebDriver loggingDriver;       
 

@@ -11,8 +11,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
             ReadFromSettings
         }
 
-        protected BrowserType _browserType;
-
         internal Browser(IWebDriver driver)
         {
             Driver = driver;

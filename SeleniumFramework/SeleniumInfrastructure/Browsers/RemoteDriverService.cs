@@ -4,7 +4,7 @@ using System;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class RemoteDriverService : IDriverService
+    internal class RemoteDriverService : IDriverService
     {
         public IWebDriver GetDriver(string browser)
         {

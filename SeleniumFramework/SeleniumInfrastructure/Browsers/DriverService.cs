@@ -6,7 +6,7 @@ using OpenQA.Selenium.PhantomJS;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class DriverService : IDriverService
+    internal class DriverService : IDriverService
     {
         public IWebDriver GetDriver(string browser)
         {

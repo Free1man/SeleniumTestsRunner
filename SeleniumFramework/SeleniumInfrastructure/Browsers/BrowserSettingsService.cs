@@ -3,7 +3,7 @@ using SeleniumFramework.SeleniumInfrastructure.Config;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    public class BrowserSettingsService
+    internal class BrowserSettingsService
     {
         public void SetBrowserSettings(IWebDriver driver, Settings settings)
         {
