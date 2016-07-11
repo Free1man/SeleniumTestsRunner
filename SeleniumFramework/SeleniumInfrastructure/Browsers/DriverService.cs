@@ -12,7 +12,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
         {
             string pathToDriver = AppDomain.CurrentDomain.BaseDirectory;
             string driverExecutableFileName = "geckodriver.exe";
-            string firefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            string firefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
             switch (browser)
             {
                 case "Firefox":
