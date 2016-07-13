@@ -24,9 +24,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Runner
             {
                 if (_instance == null)
                 {
-                    var settings = new Settings();
-                    var browserService = new BrowserService(settings);
-                    var appWorkingDirectoryService = new AppWorkingDirectoryService(settings.TestFolder);
+                    ISettings settings = new Settings();
+                    IBrowserService browserService = new BrowserService(settings);
+                    IAppWorkingDirectoryService appWorkingDirectoryService = new AppWorkingDirectoryService(settings.TestFolder);
 
                     _instance = new SeleniumDriverRunner(browserService, appWorkingDirectoryService);
                 }

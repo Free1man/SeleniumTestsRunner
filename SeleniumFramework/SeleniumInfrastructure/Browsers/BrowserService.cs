@@ -6,9 +6,9 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
     internal class BrowserService : IBrowserService
     {
-        private readonly Settings _settings;
+        private readonly ISettings _settings;
 
-        public BrowserService(Settings settings)
+        public BrowserService(ISettings settings)
         {
             _settings = settings;
         }

@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
-    public class Settings
+    public class Settings : ISettings
     {
         public Settings()
         {

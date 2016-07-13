@@ -5,7 +5,7 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
     internal class BrowserSettingsService
     {
-        public void SetBrowserSettings(IWebDriver driver, Settings settings)
+        public void SetBrowserSettings(IWebDriver driver, ISettings settings)
         {
             driver.Manage().Timeouts().ImplicitlyWait(settings.ImplicitWaitTime);
 

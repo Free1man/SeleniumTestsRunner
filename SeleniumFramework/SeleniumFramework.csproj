@@ -62,6 +62,7 @@
     <Compile Include="SeleniumInfrastructure\Browsers\IBrowserService.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\IDriverService.cs" />
     <Compile Include="SeleniumInfrastructure\Browsers\RemoteDriverService.cs" />
+    <Compile Include="SeleniumInfrastructure\Config\ISettings.cs" />
     <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
     <Compile Include="SeleniumInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />
     <Compile Include="SeleniumInfrastructure\AppDirectory\IAppWorkingDirectoryService.cs" />
