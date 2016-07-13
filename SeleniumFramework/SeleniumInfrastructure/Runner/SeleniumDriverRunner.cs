@@ -10,8 +10,6 @@ namespace SeleniumFramework.SeleniumInfrastructure.Runner
 
         private readonly IBrowserService _browserService;
 
-        public Settings Settings;
-
         private SeleniumDriverRunner(IBrowserService browserService, IAppWorkingDirectoryService appWorkingDirectoryService)
         {
             _browserService = browserService;
