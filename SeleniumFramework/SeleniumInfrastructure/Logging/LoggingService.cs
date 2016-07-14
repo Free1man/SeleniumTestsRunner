@@ -6,19 +6,19 @@ namespace SeleniumFramework.SeleniumInfrastructure.Logging
 {
     internal class LoggingService : ILoggingService
     {
-        private EventFiringWebDriver loggingDriver;       
+        private EventFiringWebDriver _loggingDriver;       
 
         public IWebDriver EnableLoggingForDriver(IWebDriver driver)
         {   
-            loggingDriver = new EventFiringWebDriver(driver);
-            driver = loggingDriver;
-            loggingDriver.ExceptionThrown += LoggingDriver_ExceptionThrown;
+            _loggingDriver = new EventFiringWebDriver(driver);
+            driver = _loggingDriver;
+            _loggingDriver.ExceptionThrown += LoggingDriver_ExceptionThrown;
             return driver;
         }
 
         private void LoggingDriver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
         {
-            loggingDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
+            _loggingDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
         }
 
     }

@@ -5,48 +5,83 @@ namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
     public class Settings : ISettings
     {
-        public Settings()
+        private string _browser;
+        private TimeSpan _implicitWaitTime;
+        private string _testFolder;
+        private string _url;
+        private bool _useLogging;
+        private bool _useRemoteBrowser;
+
+        public string Url
         {
-            Initialise();
+            get
+            {
+                _url = ConfigurationManager.AppSettings["DefaultUrl"];
+                if (string.IsNullOrEmpty(_url))
+                {
+                    throw new InvalidOperationException("DefaultUrl must be set in Configuration");
+                }
+                return _url;
+            }
         }
 
-        public bool UseLogging { get; private set; }
-        public bool UseRemoteBrowser { get; private set; }
-        public string Browser { get; private set; }
-        public string Url { get; private set; }
-        public string TestFolder { get; private set; }
-        public TimeSpan ImplicitWaitTime { get; private set; }
-
-        private void Initialise()
+        public TimeSpan ImplicitWaitTime
         {
-            Url = ConfigurationManager.AppSettings["DefaultUrl"];
-            if (string.IsNullOrEmpty(Url))
+            get
             {
-                throw new InvalidOperationException("DefaultUrl must be set in Configuration");
+                _implicitWaitTime =
+                    TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
+                if (_implicitWaitTime == TimeSpan.Zero)
+                {
+                    throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration");
+                }
+                return _implicitWaitTime;
             }
+        }
 
-            UseRemoteBrowser = Convert.ToBoolean(ConfigurationManager.AppSettings["UseRemoteBrowser"]);
-           
-            Browser = ConfigurationManager.AppSettings["DefaultBrowser"];
-            if (string.IsNullOrWhiteSpace(Browser))
+
+        public bool UseLogging
+        {
+            get
             {
-                throw new InvalidOperationException("DefaultBrowser must be set in Configuration");
+                _useLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);
+                return _useLogging;
             }
+        }
 
-            TestFolder = ConfigurationManager.AppSettings["TestFolder"] + DateTime.Now.ToString("yyyy-MM-dd-hhmm");
-            if (string.IsNullOrWhiteSpace(TestFolder))
+        public bool UseRemoteBrowser
+        {
+            get
             {
-                throw new InvalidOperationException("TestFolder must be set in Configuration");
+                _useRemoteBrowser = Convert.ToBoolean(ConfigurationManager.AppSettings["UseRemoteBrowser"]);
+                return _useRemoteBrowser;
             }
+        }
 
-            ImplicitWaitTime =
-                TimeSpan.FromSeconds(Convert.ToDouble(ConfigurationManager.AppSettings["DefaultImplicitlyWait"]));
-            if (ImplicitWaitTime == TimeSpan.Zero)
+        public string Browser
+        {
+            get
             {
-                throw new InvalidOperationException("Non 0 ImplicitWaitTime must be set in Configuration");
+                _browser = ConfigurationManager.AppSettings["DefaultBrowser"];
+                if (string.IsNullOrWhiteSpace(_browser))
+                {
+                    throw new InvalidOperationException("DefaultBrowser must be set in Configuration");
+                }
+                return _browser;
             }
+        }
 
-            UseLogging = Convert.ToBoolean(ConfigurationManager.AppSettings["UseLogging"]);
+        public string TestFolder
+        {
+            get
+            {
+                _testFolder = ConfigurationManager.AppSettings["TestFolder"] + DateTime.Now.ToString("yyyy-MM-dd-hhmm");
+                if (string.IsNullOrWhiteSpace(_testFolder))
+                {
+                    throw new InvalidOperationException("TestFolder must be set in Configuration");
+                }
+                return _testFolder;
+            }
         }
     }
 }
