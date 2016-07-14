@@ -5,17 +5,17 @@ namespace DataBaseHelper
 {
     public class DataBaseInteractions
     {
-        private DataBaseSettings dataBaseSettings;
+        private readonly DataBaseSettings _dataBaseSettings;
 
-        DataBaseInteractions()
+        private DataBaseInteractions()
         {
-            dataBaseSettings = new DataBaseSettings();
+            _dataBaseSettings = new DataBaseSettings();
         }
 
         private string CreateSqlStringRestoreDatabase()
         {
-            var dataBaseName = dataBaseSettings.DataBaseName;
-            var pathToDataBase = dataBaseSettings.PathToDataBase;
+            var dataBaseName = _dataBaseSettings.DataBaseName;
+            var pathToDataBase = _dataBaseSettings.PathToDataBase;
             var sqlString = $@"
             ALTER DATABASE { dataBaseName } SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
             DROP DATABASE { dataBaseName }
@@ -30,7 +30,7 @@ namespace DataBaseHelper
         [SqlProcedure]
         private void ExcuteSqlQuery(string sqlQuery)
         {
-            using (var connectionString = new SqlConnection(dataBaseSettings.ConnectionString))
+            using (var connectionString = new SqlConnection(_dataBaseSettings.ConnectionString))
             {
                 var command = new SqlCommand
                 {
@@ -43,7 +43,7 @@ namespace DataBaseHelper
             }
         }
 
-        public void RestoreDB()
+        public void RestoreDb()
         {
             ExcuteSqlQuery(CreateSqlStringRestoreDatabase());
         }
