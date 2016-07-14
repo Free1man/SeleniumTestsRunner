@@ -2,7 +2,7 @@
 
 namespace SeleniumFramework.SeleniumInfrastructure.Browsers
 {
-    interface IDriverService
+    internal interface IDriverService
     {
         IWebDriver GetDriver(string browser);
     }

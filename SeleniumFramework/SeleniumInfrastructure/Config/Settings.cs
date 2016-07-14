@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
-    public class Settings : ISettings
+    internal class Settings : ISettings
     {
         private string _browser;
         private TimeSpan _implicitWaitTime;

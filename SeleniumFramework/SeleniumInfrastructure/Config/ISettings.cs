@@ -2,7 +2,7 @@
 
 namespace SeleniumFramework.SeleniumInfrastructure.Config
 {
-    public interface ISettings
+    internal interface ISettings
     {
         bool UseLogging { get; }
         bool UseRemoteBrowser { get; }

@@ -10,19 +10,26 @@ namespace SeleniumFramework.SeleniumInfrastructure.Browsers
     {
         public IWebDriver GetDriver(string browser)
         {
+            //TO DO move all hardcoded values to the Settings
             string pathToDriver = AppDomain.CurrentDomain.BaseDirectory;
-            string driverExecutableFileName = "geckodriver.exe";
-            string firefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+            string driverExecutableFileName;
+           
             switch (browser)
             {
                 case "Firefox":
-                    FirefoxDriverService firefoxDriverService = FirefoxDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
+                    driverExecutableFileName = "geckodriver.exe";
+                    var firefoxDriverService = FirefoxDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
+                    string firefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
                     firefoxDriverService.FirefoxBinaryPath = firefoxBinaryPath;
                     return new FirefoxDriver(firefoxDriverService);
                 case "Chrome":
-                    return new ChromeDriver();
+                    driverExecutableFileName = "chromedriver.exe";
+                    var chromeDriverService = ChromeDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
+                    return new ChromeDriver(chromeDriverService);
                 case "PhantomJS":
-                    return new PhantomJSDriver();
+                    driverExecutableFileName = "phantomjs.exe";
+                    var phantomJsDriverService = PhantomJSDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
+                    return new PhantomJSDriver(phantomJsDriverService);
                 default:
                     throw new ArgumentException(browser + "- Not supported browser");
             }
