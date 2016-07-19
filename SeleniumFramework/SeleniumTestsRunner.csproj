@@ -55,21 +55,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SeleniumInfrastructure\Browsers\Browser.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\BrowserService.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\BrowserSettingsService.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\DriverService.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\IBrowserService.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\IDriverService.cs" />
-    <Compile Include="SeleniumInfrastructure\Browsers\RemoteDriverService.cs" />
-    <Compile Include="SeleniumInfrastructure\Config\ISettings.cs" />
-    <Compile Include="SeleniumInfrastructure\Config\Settings.cs" />
-    <Compile Include="SeleniumInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />
-    <Compile Include="SeleniumInfrastructure\AppDirectory\IAppWorkingDirectoryService.cs" />
-    <Compile Include="SeleniumInfrastructure\Logging\LoggingService.cs" />
-    <Compile Include="SeleniumInfrastructure\Logging\ILoggingService.cs" />
-    <Compile Include="SeleniumInfrastructure\PageObject\BasePageObject.cs" />
-    <Compile Include="SeleniumInfrastructure\Runner\SeleniumDriverRunner.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\Browser.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\BrowserService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\BrowserSettingsService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\DriverService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\IBrowserService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\IDriverService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Browsers\RemoteDriverService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\ISettings.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\Settings.cs" />
+    <Compile Include="TestRunnerInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />
+    <Compile Include="TestRunnerInfrastructure\AppDirectory\IAppWorkingDirectoryService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Logging\LoggingService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Logging\ILoggingService.cs" />
+    <Compile Include="TestRunnerInfrastructure\PageObject\BasePageObject.cs" />
+    <Compile Include="TestRunnerInfrastructure\Runner\SeleniumDriverRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
