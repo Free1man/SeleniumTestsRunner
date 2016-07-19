@@ -7,8 +7,8 @@
     <ProjectGuid>{6FB4C3B6-0348-4365-BF1A-E23707343CEA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeleniumFramework</RootNamespace>
-    <AssemblyName>SeleniumFramework</AssemblyName>
+    <RootNamespace>SeleniumTestsRunner</RootNamespace>
+    <AssemblyName>SeleniumTestsRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

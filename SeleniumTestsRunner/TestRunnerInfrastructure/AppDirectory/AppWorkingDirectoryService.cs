@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.AppDirectory
 {
     public class AppWorkingDirectoryService : IAppWorkingDirectoryService
     {

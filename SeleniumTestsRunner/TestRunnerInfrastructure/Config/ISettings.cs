@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Config
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
     internal interface ISettings
     {

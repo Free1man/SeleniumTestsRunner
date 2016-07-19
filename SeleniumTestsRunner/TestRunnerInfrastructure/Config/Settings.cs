@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Config
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
     internal class Settings : ISettings
     {

@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Remote;
 using System;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Browsers
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
 {
     internal class RemoteDriverService : IDriverService
     {

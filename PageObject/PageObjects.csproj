@@ -35,12 +35,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SeleniumFramework\SeleniumTestsRunner.csproj">
-      <Project>{6fb4c3b6-0348-4365-bf1a-e23707343cea}</Project>
-      <Name>SeleniumTestsRunner</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System.Drawing" />
     <Reference Include="WebDriver, Version=2.53.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.2.53.1\lib\net40\WebDriver.dll</HintPath>
@@ -53,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumTestsRunner\SeleniumTestsRunner.csproj">
+      <Project>{6fb4c3b6-0348-4365-bf1a-e23707343cea}</Project>
+      <Name>SeleniumTestsRunner</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

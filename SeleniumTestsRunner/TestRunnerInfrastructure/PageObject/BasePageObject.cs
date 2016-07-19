@@ -2,10 +2,10 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
-using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.Runner;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
 
-namespace SeleniumFramework.SeleniumInfrastructure.PageObject
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
 {
     public abstract class BasePageObject
     {

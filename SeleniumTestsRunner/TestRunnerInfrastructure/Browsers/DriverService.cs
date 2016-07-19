@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.PhantomJS;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Browsers
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
 {
     internal class DriverService : IDriverService
     {

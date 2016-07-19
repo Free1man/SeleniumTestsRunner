@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
-using SeleniumFramework.SeleniumInfrastructure.Config;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Browsers
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
 {
     internal class BrowserSettingsService
     {

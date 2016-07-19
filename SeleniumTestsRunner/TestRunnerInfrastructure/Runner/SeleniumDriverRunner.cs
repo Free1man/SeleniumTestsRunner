@@ -1,8 +1,8 @@
-﻿using SeleniumFramework.SeleniumInfrastructure.AppDirectory;
-using SeleniumFramework.SeleniumInfrastructure.Browsers;
-using SeleniumFramework.SeleniumInfrastructure.Config;
+﻿using SeleniumTestsRunner.TestRunnerInfrastructure.AppDirectory;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Browsers;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Runner
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {
     public class SeleniumDriverRunner
     {

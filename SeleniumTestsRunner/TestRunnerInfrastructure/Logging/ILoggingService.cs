@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Logging
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Logging
 {
     public interface ILoggingService
     {

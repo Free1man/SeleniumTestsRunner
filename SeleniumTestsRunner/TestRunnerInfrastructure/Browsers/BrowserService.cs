@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
-using SeleniumFramework.SeleniumInfrastructure.Config;
-using SeleniumFramework.SeleniumInfrastructure.Logging;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Logging;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Browsers
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
 {
     internal class BrowserService : IBrowserService
     {

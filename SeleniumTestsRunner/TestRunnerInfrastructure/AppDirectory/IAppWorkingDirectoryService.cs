@@ -1,4 +1,4 @@
-﻿namespace SeleniumFramework.SeleniumInfrastructure.AppDirectory
+﻿namespace SeleniumTestsRunner.TestRunnerInfrastructure.AppDirectory
 {
     public interface IAppWorkingDirectoryService
     {

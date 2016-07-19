@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium;
 
-namespace SeleniumFramework.SeleniumInfrastructure.Logging
+namespace SeleniumTestsRunner.TestRunnerInfrastructure.Logging
 {
     internal class LoggingService : ILoggingService
     {

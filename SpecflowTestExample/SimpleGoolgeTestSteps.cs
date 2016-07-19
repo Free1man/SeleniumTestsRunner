@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using PageObjects.Google;
-using SeleniumFramework.SeleniumInfrastructure.Runner;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
 using TechTalk.SpecFlow;
 
 namespace SpecflowTestExample
