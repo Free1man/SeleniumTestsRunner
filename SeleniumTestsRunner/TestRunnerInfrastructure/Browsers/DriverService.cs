@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.IE;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
 {
@@ -19,7 +20,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
                 case "Firefox":
                     driverExecutableFileName = "geckodriver.exe";
                     var firefoxDriverService = FirefoxDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
-                    string firefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+                    string firefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
                     firefoxDriverService.FirefoxBinaryPath = firefoxBinaryPath;
                     return new FirefoxDriver(firefoxDriverService);
                 case "Chrome":
@@ -30,6 +31,11 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Browsers
                     driverExecutableFileName = "phantomjs.exe";
                     var phantomJsDriverService = PhantomJSDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
                     return new PhantomJSDriver(phantomJsDriverService);
+                case "InternetExplorer":
+                    // configure - http://stackoverflow.com/questions/21330079/i-o-exception-and-unable-to-find-element-in-ie-using-selenium-webdriver/21373224#21373224
+                    driverExecutableFileName = "IEDriverServer.exe";
+                    var iEDriverService = InternetExplorerDriverService.CreateDefaultService(pathToDriver, driverExecutableFileName);
+                    return new InternetExplorerDriver();
                 default:
                     throw new ArgumentException(browser + "- Not supported browser");
             }
