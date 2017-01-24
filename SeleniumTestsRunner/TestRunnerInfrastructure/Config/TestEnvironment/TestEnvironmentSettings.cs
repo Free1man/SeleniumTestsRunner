@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config.TestEnvironment
 {
-    internal class TestEnvironmentSettings : ITestEnvironmentSettings
+    internal class TestEnvironmentSettings 
     {
         private string _browserVer;
         private string _platform;

@@ -54,10 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestRunnerInfrastructure\Config\ISettings.cs" />
-    <Compile Include="TestRunnerInfrastructure\Config\Selenium\ISeleniumGeneralSettings.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\Selenium\SeleniumGeneralSettings.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\Settings.cs" />
-    <Compile Include="TestRunnerInfrastructure\Config\TestEnvironment\ITestEnvironmentSettings.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\TestEnvironment\TestEnvironmentSettings.cs" />
     <Compile Include="TestRunnerInfrastructure\Drivers\DriverCreator.cs" />
     <Compile Include="TestRunnerInfrastructure\Drivers\RemoteDriverService.cs" />

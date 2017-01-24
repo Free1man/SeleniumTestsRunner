@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config.Selenium
 {
-    internal class SeleniumGeneralSettings : ISeleniumGeneralSettings
+    internal class SeleniumGeneralSettings 
     {
         private string _browser;
         private TimeSpan _implicitWaitTime;

@@ -9,12 +9,12 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
     {
         public Settings()
         {
-            ISeleniumGeneralSettings seleniumGeneralSettings = new SeleniumGeneralSettings();
+            SeleniumGeneralSettings seleniumGeneralSettings = new SeleniumGeneralSettings();
             Browser = seleniumGeneralSettings.Browser;
             UseLogging = seleniumGeneralSettings.UseLogging;
             ImplicitWaitTime = seleniumGeneralSettings.ImplicitWaitTime;
 
-            ITestEnvironmentSettings testEnvironmentSettings = new TestEnvironmentSettings();
+            TestEnvironmentSettings testEnvironmentSettings = new TestEnvironmentSettings();
             RemoteDriverHubUrl = testEnvironmentSettings.RemoteDriverHubUrl;
             Url = testEnvironmentSettings.Url;
             ScreenshotsFolder = testEnvironmentSettings.ScreenshotsFolder;
