@@ -20,7 +20,7 @@ namespace PageObjects.Google
 
         public string GetTranslationsResult()
         {
-            Wait.Until(driver => txtTranslationsResult.Text.Length > 0 ? txtTranslationsResult : null);
+            Wait.Until(driver => txtTranslationsResult.Text.Length > 0);
             return txtTranslationsResult.Text;
         }
     }

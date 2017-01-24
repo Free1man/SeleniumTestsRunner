@@ -40,15 +40,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RelevantCodes.ExtentReports, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExtentReports.2.41.0\lib\RelevantCodes.ExtentReports.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
-    <Reference Include="WebDriver, Version=2.53.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.2.53.1\lib\net40\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebDriver.Support, Version=2.53.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -57,52 +53,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestRunnerInfrastructure\Browsers\Browser.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\BrowserService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\BrowserSettingsService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\DriverService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\IBrowserService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\IDriverService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Browsers\RemoteDriverService.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\ISettings.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\Selenium\ISeleniumGeneralSettings.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\Selenium\SeleniumGeneralSettings.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\Settings.cs" />
-    <Compile Include="TestRunnerInfrastructure\AppDirectory\AppWorkingDirectoryService.cs" />
-    <Compile Include="TestRunnerInfrastructure\AppDirectory\IAppWorkingDirectoryService.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\TestEnvironment\ITestEnvironmentSettings.cs" />
+    <Compile Include="TestRunnerInfrastructure\Config\TestEnvironment\TestEnvironmentSettings.cs" />
+    <Compile Include="TestRunnerInfrastructure\Drivers\DriverCreator.cs" />
+    <Compile Include="TestRunnerInfrastructure\Drivers\RemoteDriverService.cs" />
     <Compile Include="TestRunnerInfrastructure\Logging\LoggingService.cs" />
-    <Compile Include="TestRunnerInfrastructure\Logging\ILoggingService.cs" />
     <Compile Include="TestRunnerInfrastructure\PageObject\BasePageObject.cs" />
-    <Compile Include="TestRunnerInfrastructure\Runner\SeleniumDriverRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRunnerInfrastructure\Runner\Browser.cs" />
+    <Compile Include="TestRunnerInfrastructure\Runner\SeleniumRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\packages\Chromium.ChromeDriver.2.22\content\chromedriver.exe">
-      <Link>chromedriver.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
-      <Link>phantomjs.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Selenium.WebDriver.IEDriver.2.53.0.0\driver\IEDriverServer.exe">
-      <Link>IEDriverServer.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\WebDriver.GeckoDriver.0.9.0\content\wires.exe">
-      <Link>wires.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="geckodriver.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="phantomjs-license.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

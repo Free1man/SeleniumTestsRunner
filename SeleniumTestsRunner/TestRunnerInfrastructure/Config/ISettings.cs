@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
-    internal interface ISettings
+    public interface ISettings
     {
         bool UseLogging { get; }
-        bool UseRemoteBrowser { get; }
+        string RemoteDriverHubUrl { get; }
         string Browser { get; }
         string Url { get; }
-        string TestFolder { get;}
+        string ScreenshotsFolder { get; }
         TimeSpan ImplicitWaitTime { get; }
+        string BrowserVer { get; }
+        string Platform { get; }
+        Dictionary<string, string> AdditionalRemoteDriverCapabilities { get; set; }
     }
 }

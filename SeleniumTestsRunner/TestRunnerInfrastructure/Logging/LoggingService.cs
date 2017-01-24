@@ -1,15 +1,23 @@
 ﻿using System.Drawing.Imaging;
-using OpenQA.Selenium.Support.Events;
+using System.IO;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Logging
 {
-    internal class LoggingService : ILoggingService
+    internal class LoggingService
     {
-        private EventFiringWebDriver _loggingDriver;       
+        private readonly ISettings _settings;
+        private EventFiringWebDriver _loggingDriver;
+
+        public LoggingService(ISettings settings)
+        {
+            _settings = settings;
+        }
 
         public IWebDriver EnableLoggingForDriver(IWebDriver driver)
-        {   
+        {
             _loggingDriver = new EventFiringWebDriver(driver);
             driver = _loggingDriver;
             _loggingDriver.ExceptionThrown += LoggingDriver_ExceptionThrown;
@@ -18,8 +26,10 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Logging
 
         private void LoggingDriver_ExceptionThrown(object sender, WebDriverExceptionEventArgs e)
         {
-            _loggingDriver.GetScreenshot().SaveAsFile("failScreenshot.png", ImageFormat.Png);
+            //TODO Consider to move somewere
+            var path = _settings.ScreenshotsFolder;
+            Directory.CreateDirectory(path);
+            _loggingDriver.GetScreenshot().SaveAsFile(path + @"\failScreenshot.png", ImageFormat.Png);
         }
-
     }
 }
