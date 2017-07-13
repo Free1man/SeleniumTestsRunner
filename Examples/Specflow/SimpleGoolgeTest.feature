@@ -2,7 +2,7 @@
 
 
 Scenario Outline: Google Search example test
-	When I type <textToSearch> in the Search field 
+	When I type <textToSearch> in the Search field
 	Then I should see <results> on the webpage 
 
 	# first test will fail - for demo

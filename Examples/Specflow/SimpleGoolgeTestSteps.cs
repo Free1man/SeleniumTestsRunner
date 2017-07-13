@@ -3,12 +3,17 @@ using PageObjects.Google;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
 using TechTalk.SpecFlow;
 
-namespace SpecflowTestExample
+namespace Examples.Specflow
 {
     [Binding]
     public sealed class SimpleGoolgeTestSteps 
     {
         private readonly SeleniumRunner _runner = SeleniumRunner.Instance;
+
+        public SimpleGoolgeTestSteps()
+        {
+            
+        }
 
         [BeforeScenario]
         public void BeforeScenario()
@@ -22,7 +27,7 @@ namespace SpecflowTestExample
             _runner.CloseBrowser();
         }
 
-        [When(@"I type (.*) in the Search field")]
+        [StepDefinition(@"I type (.*) in the Search field")]
         public void WhenITypeToSearchTextField(string textToSearch)
         {
             var googleManiPage = new GoogleMainPage();

@@ -1,11 +1,14 @@
-﻿using System;
 using System.Collections.Generic;
+using OpenQA.Selenium;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {
-    public class SeleniumRunner 
+    /// <summary>
+    /// Represents a singleton which manages creating and closing the browser.
+    /// </summary>
+    public class SeleniumRunner
     {
         private static SeleniumRunner _instance;
 
@@ -16,6 +19,9 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             _settings = settings;
         }
 
+        /// <summary>
+        ///     Instance of selenium runner.
+        /// </summary>
         public static SeleniumRunner Instance
         {
             get
@@ -29,22 +35,33 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             }
         }
 
+        /// <summary>
+        ///     Gets the browser instance.
+        /// </summary>
         public Browser Browser { get; private set; }
 
+        /// <summary>
+        ///     Creates the browser instance.
+        ///     Exception thrown if more than one browser was started.
+        /// </summary>
+        /// <param name="additionalCapabilities">Additional selenium capabilities specific to test, like Title, Tags, etc.</param>
         public void StartBrowser(Dictionary<string, string> additionalCapabilities = null)
         {
             if (Browser == null)
             {
-                _settings.AdditionalRemoteDriverCapabilities = additionalCapabilities;
-                var driverCreator = new DriverCreator(_settings);
-                Browser = new Browser(driverCreator.CreateDriverForBrowser(), _settings);
+                _settings.ExtendAdditionalRemoteDriverCapabilities(additionalCapabilities);
+                var driverFactory = new RemoteDriverFactory(_settings);
+                Browser = new Browser(driverFactory.GetDriver(), _settings);
             }
             else
             {
-                throw new Exception("Only one browser allowed per test thread");
-            }       
+                throw new WebDriverException("Multiple browser instances for this test has been detected, test will be terminated.");
+            }
         }
 
+        /// <summary>
+        ///     Close current browser.
+        /// </summary>
         public void CloseBrowser()
         {
             Browser.Driver.Quit();

@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumTestsRunner.TestRunnerInfrastructure.PageObject;
 
+
 namespace PageObjects.Google
 {
     public class GoogleTranslatePage : BasePageObject
@@ -23,5 +24,7 @@ namespace PageObjects.Google
             Wait.Until(driver => txtTranslationsResult.Text.Length > 0);
             return txtTranslationsResult.Text;
         }
+
+        
     }
 }

@@ -1,30 +1,31 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
-using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
 {
+    /// <summary>
+    ///     Represents a class for base page object.
+    /// </summary>
     public abstract class BasePageObject
     {
-        //TO DO: Consider to move to other place
-        private readonly TimeSpan _waitTime = new Settings().ImplicitWaitTime;
-
+        /// <summary>
+        /// Initializes an instance of page object 
+        /// </summary>
         protected BasePageObject()
         {
             PageFactory.InitElements(Driver, this);
         }
 
-        public IWebDriver Driver
-        {
-            get { return SeleniumRunner.Instance.Browser.Driver; }
-        }
+        /// <summary>
+        ///     Current selenium WebDriver instance.
+        /// </summary>
+        protected IWebDriver Driver => SeleniumRunner.Instance.Browser.Driver;
 
-        public WebDriverWait Wait
-        {
-            get { return new WebDriverWait(Driver, _waitTime); }
-        }
+        /// <summary>
+        ///     Current selenium WebDriverWait instance.
+        /// </summary>
+        protected WebDriverWait Wait => SeleniumRunner.Instance.Browser.Wait;
     }
 }

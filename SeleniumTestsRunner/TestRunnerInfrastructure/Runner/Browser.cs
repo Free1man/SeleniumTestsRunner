@@ -1,29 +1,61 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Diagnostics;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {
+    /// <summary>
+    ///     Represents a wrapper around IWebDriver to not exposing the selenium library to tests
+    /// </summary>
     public class Browser
     {
         internal Browser(IWebDriver driver, ISettings settings)
         {
             Driver = driver;
-            //Navigate to url from app.config
             Driver.Url = settings.Url;
-            //Set ImplicitWaitTime from app.config
-            Driver.Manage().Timeouts().ImplicitlyWait(settings.ImplicitWaitTime);
+            WaitTime = settings.WaitTime;
+            Driver.Manage().Timeouts().SetScriptTimeout(WaitTime);
+            Driver.Manage().Timeouts().ImplicitlyWait(WaitTime);
         }
 
-        internal IWebDriver Driver { get; set; }
+        private TimeSpan WaitTime { get; }
 
+        internal IWebDriver Driver { get; }
+
+        internal WebDriverWait Wait => new WebDriverWait(Driver, WaitTime);
+
+        /// <summary>
+        ///     Maximise the current window
+        /// </summary>
+        public void MaximiseWindow()
+        {
+            Driver.Manage().Window.Maximize();
+        }
+
+        /// <summary>
+        ///     Navigate to URL
+        /// </summary>
+        /// <param name="url">Webpage url</param>
         public void Url(string url)
         {
             Driver.Url = url;
         }
-
-        public void MaximiseWindow()
+        /// <summary>
+        /// Send results to SauceLabs.
+        /// </summary>
+        /// <param name="testPassed">'true' - test passed, 'false' - test failed </param>
+        public void SendTestResultsToSauceLabs(bool testPassed)
         {
-            Driver.Manage().Window.Maximize();
+            try
+            {
+                ((IJavaScriptExecutor)Driver).ExecuteScript("sauce:job-result=" + (testPassed ? "passed" : "failed"));
+            }
+            catch (InvalidOperationException e)
+            {
+                Trace.WriteLine("Failed to send test result to Saucelabs. " + e.Message);
+            }
         }
     }
 }
