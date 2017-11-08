@@ -49,8 +49,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
                 Driver.FindElement(By.LinkText(link)).Click();
             }
         }
-
-        ///Refactor this according to PITA-296.
+        
         /// <summary>
         ///     Return true if one or more text is found in the webpage(even if text occurs multiple times), otherwise return false.
         /// </summary>
