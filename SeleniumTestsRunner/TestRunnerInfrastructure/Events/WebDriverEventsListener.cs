@@ -50,7 +50,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Events
                     screenshotName = screenshotName.Replace(c, '_');
                 }
             }
-            _eventFiringWebDriver.GetScreenshot().SaveAsFile(path + $@"\{screenshotName}.png", ImageFormat.Png);
+            _eventFiringWebDriver.GetScreenshot().SaveAsFile(path + $@"\{screenshotName}.png");
         }
         
     }

@@ -16,8 +16,8 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             Driver = driver;
             Driver.Url = settings.Url;
             WaitTime = settings.WaitTime;
-            Driver.Manage().Timeouts().SetScriptTimeout(WaitTime);
-            Driver.Manage().Timeouts().ImplicitlyWait(WaitTime);
+            Driver.Manage().Timeouts().AsynchronousJavaScript = WaitTime;
+            Driver.Manage().Timeouts().ImplicitWait = WaitTime;
         }
 
         private TimeSpan WaitTime { get; }
