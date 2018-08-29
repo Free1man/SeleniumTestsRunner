@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
+using System;
 using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
@@ -34,6 +35,8 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
         ///     WebDriver capabilities like browserName,version, platform and etc.
         /// </summary>
         Dictionary<string, string> AdditionalRemoteDriverCapabilities { get; }
+
+        string Browser { get; }
 
         /// <summary>
         /// Add more capabilities to existing set.

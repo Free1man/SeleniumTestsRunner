@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
@@ -25,17 +26,12 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
             _settings = settings;
         }
 
-        public IWebDriver GetDriver()
+        public IWebDriver 
+            
+            GetDriver()
         {
             var driver = GetEventFiringWebDriver(GetRemoteDriver());
             return driver;
-        }
-
-        private DesiredCapabilities AddFirefoxSpecificCapabilities(DesiredCapabilities capabilities)
-        {
-            var profile = new FirefoxProfile();
-            capabilities.SetCapability(FirefoxDriver.ProfileCapabilityName, profile.ToBase64String());
-            return capabilities;
         }
 
         private IWebDriver GetEventFiringWebDriver(IWebDriver driver)
@@ -52,20 +48,16 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
         /// </summary>
         private IWebDriver GetRemoteDriver()
         {
-            var capabilities = new DesiredCapabilities();
-            if (_settings.AdditionalRemoteDriverCapabilities != null)
-            {
-                foreach (var capability in _settings.AdditionalRemoteDriverCapabilities)
-                {
-                    capabilities.SetCapability(capability.Key, capability.Value);
-                }
-            }
-            if (capabilities.BrowserName == "firefox")
-            {
-                capabilities = AddFirefoxSpecificCapabilities(capabilities);
-            }
-            return new RemoteWebDriver(new Uri(_settings.RemoteDriverHubUrl), capabilities,
-                TimeSpan.FromSeconds(60));
+            var browser = GetBrowserByReflection(_settings);
+            return new RemoteWebDriver(new Uri(_settings.RemoteDriverHubUrl), browser.GetOptions());
+        }
+
+        private IBrowser GetBrowserByReflection(ISettings settings)
+        {
+            var type = Type.GetType($"SeleniumTestsRunner.TestRunnerInfrastructure.Drivers.{settings.Browser}");
+            ConstructorInfo ctor = type.GetConstructor(new[] {typeof(ISettings)});
+            IBrowser browser = (IBrowser) ctor.Invoke(new object[] { settings });
+            return browser;
         }
     }
 }

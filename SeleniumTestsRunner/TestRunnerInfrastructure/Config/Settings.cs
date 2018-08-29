@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
@@ -122,7 +123,20 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
                 return _additionalRemoteDriverCapabilities;
             }           
         }
-      
+
+        string _browser;
+        public string Browser
+        {
+            get
+            {
+                if (_browser != null)
+                {
+                    _browser = _appConfigReader.ReadStringSettingFromAppConfig("Browser");
+                }
+                return _browser;
+            }
+        }
+
         /// <summary>
         /// Add more capabilities to existing set.
         /// </summary>
