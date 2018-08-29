@@ -9,25 +9,25 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
     /// </summary>
     public abstract class FrameObject : BasePageObject
     {
-     
+
         /// <summary>
         ///     Click text when it is displayed.
-        ///     Exception will be thrown if there are more than one webelements displayed.
-        ///     Exception will be thrown if there is no weblement found.
+        ///     Exception will be thrown if there are more than one elements displayed.
+        ///     Exception will be thrown if there is no elements found.
         /// </summary>
-        /// <param name="text">Text in the clickable webelements.</param>
+        /// <param name="text">Text in the clickable elements.</param>
         public void ClickByText(string text)
         {
             var webElements = Driver.FindElements(By.XPath(".//*[text()[contains(.,'" + text + "')]]"));
-            var dispayedElements = webElements.Count(webElement => webElement.Displayed);
-            if (dispayedElements == 1)
+            var displayedElements = webElements.Count(webElement => webElement.Displayed);
+            if (displayedElements == 1)
             {
                 var displayedElement = webElements.First(webElement => webElement.Displayed);
                 displayedElement.Click();
             }
-            else if (dispayedElements > 1)
+            else if (displayedElements > 1)
             {
-                throw new MoreThanOneElementException("There are " + dispayedElements + " elements with the name '" + text + "'found. Unable to proceed further.");
+                throw new MoreThanOneElementException("There are " + displayedElements + " elements with the name '" + text + "'found. Unable to proceed further.");
             }
             else
             {
@@ -53,7 +53,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
         /// <summary>
         ///     Return true if one or more text is found in the webpage(even if text occurs multiple times), otherwise return false.
         /// </summary>
-        /// <param name="text">Text in the displayed webelements.</param>
+        /// <param name="text">Text in the displayed elements.</param>
         public bool TextIsDisplayed(string text)
         {
             var webElements = Driver.FindElements(By.XPath(".//*[text()[contains(.,'" + text + "')]]"));

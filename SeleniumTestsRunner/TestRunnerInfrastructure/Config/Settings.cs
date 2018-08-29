@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
@@ -124,15 +125,17 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }           
         }
 
-        string _browser;
+        private string _browser;
         public string Browser
         {
             get
             {
                 if (_browser != null)
                 {
-                    _browser = _appConfigReader.ReadStringSettingFromAppConfig("Browser");
+                    return _browser;
                 }
+                _browser = _appConfigReader.ReadStringSettingFromAppConfig("Browser");
+                _browser = new CultureInfo("en-US").TextInfo.ToTitleCase(_browser);
                 return _browser;
             }
         }

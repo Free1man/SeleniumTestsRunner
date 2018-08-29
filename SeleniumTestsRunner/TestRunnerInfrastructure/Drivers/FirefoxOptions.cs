@@ -6,25 +6,22 @@ using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 {
-    public class Firefox : IBrowser
+    public class FirefoxOptions : IBrowserOptions
     {
-        private ISettings _settings;
+        private readonly ISettings _settings;
 
-        public Firefox(ISettings settings)
+        public FirefoxOptions(ISettings settings)
         {
             _settings = settings;
         }     
 
-        public Dictionary<string, string> AdditionalRemoteDriverCapabilities
-        {
-            get { return _settings.AdditionalRemoteDriverCapabilities; }
-        }
+        public Dictionary<string, string> AdditionalRemoteDriverCapabilities => _settings.AdditionalRemoteDriverCapabilities;
 
         public DriverOptions GetOptions()
         {
             var profile = new FirefoxProfile();
-            var options = new FirefoxOptions();
-            options.AddAdditionalCapability(FirefoxDriver.ProfileCapabilityName, profile.ToBase64String());
+            var options = new OpenQA.Selenium.Firefox.FirefoxOptions();
+            options.SetPreference(FirefoxDriver.ProfileCapabilityName, profile.ToBase64String());
             return options;
         }
 

@@ -59,9 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\AppConfigReader.cs" />
     <Compile Include="TestRunnerInfrastructure\Config\IAppConfigReader.cs" />
-    <Compile Include="TestRunnerInfrastructure\Drivers\Chrome.cs" />
-    <Compile Include="TestRunnerInfrastructure\Drivers\Firefox.cs" />
-    <Compile Include="TestRunnerInfrastructure\Drivers\IBrowser.cs" />
+    <Compile Include="TestRunnerInfrastructure\Drivers\ChromeOptions.cs" />
+    <Compile Include="TestRunnerInfrastructure\Drivers\FirefoxOptions.cs" />
+    <Compile Include="TestRunnerInfrastructure\Drivers\IBrowserOptions.cs" />
     <Compile Include="TestRunnerInfrastructure\Helpers\CustomExceptions.cs" />
     <Compile Include="TestRunnerInfrastructure\Helpers\WaitHelpers.cs" />
     <Compile Include="TestRunnerInfrastructure\Logger\CustomLogger.cs" />
