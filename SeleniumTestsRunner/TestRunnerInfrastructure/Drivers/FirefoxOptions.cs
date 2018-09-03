@@ -8,14 +8,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 {
     public class FirefoxOptions : IBrowserOptions
     {
-        private readonly ISettings _settings;
-
-        public FirefoxOptions(ISettings settings)
-        {
-            _settings = settings;
-        }     
-
-        public Dictionary<string, string> AdditionalRemoteDriverCapabilities => _settings.AdditionalRemoteDriverCapabilities;
+        public ISettings Settings { get; set; }
 
         public DriverOptions GetOptions()
         {

@@ -54,8 +54,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
         private IBrowserOptions GetBrowserOptionsByReflection(ISettings settings)
         {
             var type = Type.GetType($"SeleniumTestsRunner.TestRunnerInfrastructure.Drivers.{settings.Browser}Options");
-            ConstructorInfo ctor = type.GetConstructor(new[] {typeof(ISettings)});
-            IBrowserOptions browser = (IBrowserOptions) ctor.Invoke(new object[] { settings });
+            IBrowserOptions browser = null; // (IBrowserOptions) ctor.Invoke(new object[] { null });
             return browser;
         }
     }

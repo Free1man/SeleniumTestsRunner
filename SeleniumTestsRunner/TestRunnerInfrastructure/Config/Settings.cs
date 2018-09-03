@@ -135,7 +135,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
                     return _browser;
                 }
                 _browser = _appConfigReader.ReadStringSettingFromAppConfig("Browser");
-                _browser = new CultureInfo("en-US").TextInfo.ToTitleCase(_browser);
                 return _browser;
             }
         }

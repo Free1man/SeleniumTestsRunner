@@ -1,11 +1,13 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
+using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 {
     public interface IBrowserOptions
     {
-        Dictionary<string, string> AdditionalRemoteDriverCapabilities { get; }
+        ISettings Settings { get; set; }
+      
         DriverOptions GetOptions();
     }
 }

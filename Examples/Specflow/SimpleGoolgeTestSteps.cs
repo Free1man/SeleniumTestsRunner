@@ -62,5 +62,12 @@ namespace Examples.Specflow
             Assert.AreEqual(googleTranslatePage.GetTranslationsResult(), translationResult);
         }
 
+        [When(@"I type google translate in the Search field")]
+        public void WhenITypeGoogleTranslateInTheSearchField()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+
     }
 }
