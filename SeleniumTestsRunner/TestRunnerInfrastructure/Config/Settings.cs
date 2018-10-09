@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
+
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
@@ -135,6 +135,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
                     return _browser;
                 }
                 _browser = _appConfigReader.ReadStringSettingFromAppConfig("Browser");
+                _browser = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(_browser);
                 return _browser;
             }
         }
