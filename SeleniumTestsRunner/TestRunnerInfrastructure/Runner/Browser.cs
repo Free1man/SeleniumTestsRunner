@@ -7,7 +7,7 @@ using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {
     /// <summary>
-    ///     Represents a wrapper around IWebDriver to not exposing the selenium library to tests
+    ///     Represents a wrapper around IWebDriver to not expose the selenium library to tests.
     /// </summary>
     public class Browser
     {
@@ -26,25 +26,17 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 
         internal WebDriverWait Wait => new WebDriverWait(Driver, WaitTime);
 
-        /// <summary>
-        ///     Maximise the current window
-        /// </summary>
+
         public void MaximiseWindow()
         {
             Driver.Manage().Window.Maximize();
         }
 
-        /// <summary>
-        ///     Navigate to URL
-        /// </summary>
-        /// <param name="url">Webpage url</param>
         public void Url(string url)
         {
             Driver.Url = url;
         }
-        /// <summary>
-        /// Send results to SauceLabs.
-        /// </summary>
+
         /// <param name="testPassed">'true' - test passed, 'false' - test failed </param>
         public void SendTestResultsToSauceLabs(bool testPassed)
         {

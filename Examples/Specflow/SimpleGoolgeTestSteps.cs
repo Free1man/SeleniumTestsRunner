@@ -38,7 +38,7 @@ namespace Examples.Specflow
         public void ThenInTextResultsIShouldSee(string results)
         {
             var googleManiPage = new GoogleMainPage();
-            Assert.IsTrue(googleManiPage.CheckLinkPresence(results));
+            Assert.IsTrue(googleManiPage.CheckTextPresence(results));
         }
 
         [When(@"I click (.*) link")]

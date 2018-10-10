@@ -19,9 +19,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             _settings = settings;
         }
 
-        /// <summary>
-        ///     Instance of selenium runner.
-        /// </summary>
         public static SeleniumRunner Instance
         {
             get
@@ -35,9 +32,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             }
         }
 
-        /// <summary>
-        ///     Gets the browser instance.
-        /// </summary>
         public Browser Browser { get; private set; }
 
         /// <summary>
@@ -59,9 +53,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
             }
         }
 
-        /// <summary>
-        ///     Close current browser.
-        /// </summary>
         public void CloseBrowser()
         {
             Browser.Driver.Quit();

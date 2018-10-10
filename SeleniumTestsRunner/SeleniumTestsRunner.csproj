@@ -66,6 +66,7 @@
     <Compile Include="TestRunnerInfrastructure\Drivers\InternetExplorerOptions.cs" />
     <Compile Include="TestRunnerInfrastructure\Helpers\CustomExceptions.cs" />
     <Compile Include="TestRunnerInfrastructure\Helpers\WaitHelpers.cs" />
+    <Compile Include="TestRunnerInfrastructure\Helpers\XPathConstructor.cs" />
     <Compile Include="TestRunnerInfrastructure\Logger\CustomLogger.cs" />
     <Compile Include="TestRunnerInfrastructure\Logger\ILogger.cs" />
     <Compile Include="TestRunnerInfrastructure\PageObject\FrameObject.cs" />

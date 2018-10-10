@@ -10,13 +10,13 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
     /// </summary>
     public abstract class BasePageObject
     {
-        /// <summary>
-        /// Initializes an instance of page object 
-        /// </summary>
-        protected BasePageObject()
-        {
-            PageFactory.InitElements(Driver, this);
-        }
+        ///// <summary>
+        ///// Initializes an instance of page object 
+        ///// </summary>
+        //protected BasePageObject()
+        //{
+        //    PageFactory.InitElements(Driver, this);
+        //}
 
         /// <summary>
         ///     Current selenium WebDriver instance.
@@ -27,5 +27,11 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
         ///     Current selenium WebDriverWait instance.
         /// </summary>
         protected WebDriverWait Wait => SeleniumRunner.Instance.Browser.Wait;
+
+        protected IWebElement FindElementByXPath(string xPath)
+        {
+            Wait.Until(driver => driver.FindElement(By.XPath(xPath)).Displayed == true);
+            return Driver.FindElement(By.XPath(xPath));
+        }
     }
 }

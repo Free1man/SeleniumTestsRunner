@@ -7,22 +7,19 @@ namespace PageObjects.Google
 {
     public class GoogleTranslatePage : BasePageObject
     {
-        [FindsBy(How = How.Id, Using = "source")]
-        private IWebElement txtSourceText { get; set; }
+        private IWebElement TxtSourceText => Driver.FindElement(By.Id("source"));
 
-        [FindsBy(How = How.Id, Using = "result_box")]
-        private IWebElement txtTranslationsResult { get; set; }
-
+        private IWebElement TxtTranslationsResult => Driver.FindElement(By.Id("result_box"));
 
         public void TransalteText(string textToTranslate)
         {
-            txtSourceText.SendKeys(textToTranslate);
+            TxtSourceText.SendKeys(textToTranslate);
         }
 
         public string GetTranslationsResult()
         {
-            Wait.Until(driver => txtTranslationsResult.Text.Length > 0);
-            return txtTranslationsResult.Text;
+            Wait.Until(driver => TxtTranslationsResult.Text.Length > 0);
+            return TxtTranslationsResult.Text;
         }
 
         

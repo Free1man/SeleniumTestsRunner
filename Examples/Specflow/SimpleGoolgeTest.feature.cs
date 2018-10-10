@@ -65,7 +65,7 @@ namespace Examples.Specflow
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Google Search example test")]
-        [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate", null)]
+        [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate on the App Store - iTunes - Apple", null)]
         [NUnit.Framework.TestCaseAttribute("testing", "Software testing - Wikipedia", null)]
         public virtual void GoogleSearchExampleTest(string textToSearch, string results, string[] exampleTags)
         {
@@ -83,7 +83,7 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Google Translate example test")]
         [NUnit.Framework.TestCaseAttribute("google translate", "Google Translate", "test", "test", null)]
-        public virtual void GoogleTranslateExampleTest(string textToSearch, string linkToclick, string wordToTranslate, string translationResults, string[] exampleTags)
+        public virtual void GoogleTranslateExampleTest(string textToSearch, string textToClick, string wordToTranslate, string translationResults, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Google Translate example test", exampleTags);
 #line 14
@@ -91,7 +91,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.When(string.Format("I type {0} in the Search field", textToSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 16
- testRunner.And(string.Format("I click {0} link", linkToclick), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I click {0} link", textToClick), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
  testRunner.And(string.Format("I trying to translate {0}", wordToTranslate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18

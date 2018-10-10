@@ -6,24 +6,24 @@ namespace PageObjects.Google
 {
     public class GoogleMainPage : BasePageObject
     {
-        [FindsBy(How = How.Name, Using = "q")]
-        private IWebElement txtSearch { get; set; }
+        private IWebElement TxtSearch => Driver.FindElement(By.Name("q"));
 
         public void Search(string textToSearch)
         {
-            txtSearch.SendKeys(textToSearch);
-            txtSearch.SendKeys(Keys.Enter);
+            TxtSearch.SendKeys(textToSearch);
+            TxtSearch.SendKeys(Keys.Enter);
         }
 
-        public void ClickSearchResultLink(string linkToClickText)
+        public void ClickSearchResultLink(string text)
         {
-            var linkToClick = Driver.FindElement(By.LinkText(linkToClickText));
-            linkToClick.Click();
+            string XPath = new XPathConstructor().ConstructXPath(text);
+            FindElementByXPath("//*" + XPath).Click();
         }
 
-        public bool CheckLinkPresence(string linkToCheckText)
+        public bool CheckTextPresence(string text)
         {
-            return Driver.FindElement(By.LinkText(linkToCheckText)).Displayed;
+            string XPath = new XPathConstructor().ConstructXPath(text);
+            return FindElementByXPath("//*" + XPath).Displayed;
         }
     }
 }
