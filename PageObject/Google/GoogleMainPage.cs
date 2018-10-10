@@ -16,13 +16,13 @@ namespace PageObjects.Google
 
         public void ClickSearchResultLink(string text)
         {
-            string XPath = new XPathConstructor().ConstructXPath(text);
+            string XPath = new XPathConstructor().ConstructXPathFluent(text);
             FindElementByXPath("//*" + XPath).Click();
         }
 
         public bool CheckTextPresence(string text)
         {
-            string XPath = new XPathConstructor().ConstructXPath(text);
+            string XPath = new XPathConstructor().ConstructXPathFluent(text);
             return FindElementByXPath("//*" + XPath).Displayed;
         }
     }

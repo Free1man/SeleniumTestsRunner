@@ -3,7 +3,7 @@ using System.Text;
 
 public class XPathConstructor
 {
-    public string ConstructXPath(string wordsToLookup)
+    public string ConstructXPathFluent(string wordsToLookup)
     {
         string[] wordsArray = wordsToLookup.Split();
         StringBuilder constructedXpath = new StringBuilder("[");
