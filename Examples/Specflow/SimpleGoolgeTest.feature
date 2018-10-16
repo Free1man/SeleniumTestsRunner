@@ -19,4 +19,5 @@ Scenario Outline: Google Translate example test
 	Examples: 
 	| textToSearch     | textToClick      | wordToTranslate | translationResults |
 	| google translate | Google Translate | test            | test               |
+	| google translate | Google Translate | тест            | test               |
 

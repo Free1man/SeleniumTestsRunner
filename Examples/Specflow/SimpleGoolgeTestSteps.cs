@@ -10,11 +10,6 @@ namespace Examples.Specflow
     {
         private readonly SeleniumRunner _runner = SeleniumRunner.Instance;
 
-        public SimpleGoolgeTestSteps()
-        {
-            
-        }
-
         [BeforeScenario]
         public void BeforeScenario()
         {
