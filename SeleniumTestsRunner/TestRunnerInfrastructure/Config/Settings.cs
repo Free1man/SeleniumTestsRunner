@@ -22,9 +22,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             _appConfigReader = configReader ?? new AppConfigReader();
         }
 
-        /// <summary>
-        ///     Gets a WaitTime data from the app.config file.
-        /// </summary>
+
         public TimeSpan WaitTime
         {
             get
@@ -35,9 +33,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
         }
 
-        /// <summary>
-        ///     Gets EnableWaitForAngular data from the app.config file, will be defaulted to true if missing.
-        /// </summary>
         public bool EnableWaitForAngular
         {
             get
@@ -50,9 +45,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
         }
 
-        /// <summary>
-        ///     Gets a ScreenshotsFolder location from the app.config file.
-        /// </summary>
         public string ScreenshotsFolder
         {
             get
@@ -79,9 +71,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             return Assembly.GetExecutingAssembly().CodeBase;
         }
 
-        /// <summary>
-        ///     Gets a Url data from the app.config file.
-        /// </summary>
         public string Url
         {
             get
@@ -94,9 +83,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
         }
 
-        /// <summary>
-        ///     Gets a RemoteDriverHubUrl data from the app.config file.
-        /// </summary>
         public string RemoteDriverHubUrl
         {
             get
@@ -109,9 +95,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
         }
 
-        /// <summary>
-        ///     Gets or sets AdditionalRemoteDriverCapabilities data from the app.config file.
-        /// </summary>
         public Dictionary<string, string> AdditionalRemoteDriverCapabilities
         {
             get
@@ -140,9 +123,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
         }
 
-        /// <summary>
-        /// Add more capabilities to existing set.
-        /// </summary>
         public void ExtendAdditionalRemoteDriverCapabilities(Dictionary<string, string> dictionary)
         {
             dictionary?.ToList().

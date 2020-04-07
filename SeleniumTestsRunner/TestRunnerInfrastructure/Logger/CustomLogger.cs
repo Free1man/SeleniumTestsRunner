@@ -6,9 +6,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Logger
     {
         static CustomLogger()
         {
-            // Removing NUnit because it is duplicates messages in visual studio, 
-            // Will not throw exception if Nunit is missing. 
-            Trace.Listeners.Remove("NUnit");
             Trace.Listeners.Add(new ConsoleTraceListener());
         }
 

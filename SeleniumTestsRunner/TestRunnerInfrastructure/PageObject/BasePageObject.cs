@@ -29,7 +29,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.PageObject
 
         protected IWebElement FindElementByXPath(string xPath)
         {
-            Wait.Until(driver => driver.FindElement(By.XPath(xPath)).Displayed == true);
+            Wait.Until(driver => driver.FindElement(By.XPath(xPath)).Displayed);
             return Driver.FindElement(By.XPath(xPath));
         }
     }

@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using System;
-using System.Diagnostics;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {
@@ -35,19 +34,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
         public void Url(string url)
         {
             Driver.Url = url;
-        }
-
-        /// <param name="testPassed">'true' - test passed, 'false' - test failed </param>
-        public void SendTestResultsToSauceLabs(bool testPassed)
-        {
-            try
-            {
-                ((IJavaScriptExecutor)Driver).ExecuteScript("sauce:job-result=" + (testPassed ? "passed" : "failed"));
-            }
-            catch (InvalidOperationException e)
-            {
-                Trace.WriteLine("Failed to send test result to Saucelabs. " + e.Message);
-            }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿Feature: Example for whisk
+﻿Feature: Example for Whisk
 
-Background: Delte all lists before start
+Background: Delete all lists before start
 	Given I login as galperin.job@gmail.com with password Test1357900
 	And I delete all lists except default
 
