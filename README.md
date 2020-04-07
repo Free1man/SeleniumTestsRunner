@@ -5,8 +5,8 @@
 - Node.js
 	- With webdriver-manager -> [Install](https://www.npmjs.com/package/webdriver-manager "Install")
 		Run in node.js console
-`npm install -g webdriver-manager`
-`webdriver-manager update`
+		1. `npm install -g webdriver-manager`
+		2. `webdriver-manager update`
 
 - Run in node.js console (it will start local selenium server) 
 `webdriver-manager start`
