@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
-using System.Collections.Generic;
 
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
@@ -18,8 +17,8 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
             return options;
         }
 
-        
 
-       
+
+
     }
 }

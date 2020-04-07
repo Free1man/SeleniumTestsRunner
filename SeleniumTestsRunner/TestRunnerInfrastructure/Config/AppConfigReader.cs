@@ -1,9 +1,9 @@
+using SeleniumTestsRunner.TestRunnerInfrastructure.Logger;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
-using SeleniumTestsRunner.TestRunnerInfrastructure.Logger;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 {
@@ -77,7 +77,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             }
             return setting;
         }
-       
+
         public string ReadStringSettingFromAppConfig(string settingName, string defaultValue = null)
         {
             var setting = ConfigurationManager.AppSettings[settingName];

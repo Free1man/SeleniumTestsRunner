@@ -19,7 +19,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
 
         public Settings(IAppConfigReader configReader = null)
         {
-             _appConfigReader = configReader ?? new AppConfigReader();
+            _appConfigReader = configReader ?? new AppConfigReader();
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
             get
             {
                 if (_waitTime != TimeSpan.Zero) return _waitTime;
-                _waitTime = _appConfigReader.ReadTimeSpanSettingFromAppConfig("DefaultWaitTime", TimeSpan.FromSeconds(30));
+                _waitTime = _appConfigReader.ReadTimeSpanSettingFromAppConfig("DefaultWaitTime", TimeSpan.FromSeconds(5));
                 return _waitTime;
             }
         }
@@ -63,7 +63,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
                 }
                 var defaultValue = CodeBaseString();
                 var timeStamp = DateTimeStamp();
-                _screenshotsFolder = 
+                _screenshotsFolder =
                     _appConfigReader.ReadStringSettingFromAppConfig("ScreenshotsFolder", defaultValue) + timeStamp;
                 return _screenshotsFolder;
             }
@@ -122,7 +122,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
                 }
                 _additionalRemoteDriverCapabilities = _appConfigReader.ReadSectionSettingFromAppConfig("AdditionalRemoteDriverCapabilities");
                 return _additionalRemoteDriverCapabilities;
-            }           
+            }
         }
 
         private string _browser;
@@ -147,6 +147,6 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
         {
             dictionary?.ToList().
                         ForEach(x => AdditionalRemoteDriverCapabilities.Add(x.Key, x.Value));
-        }      
+        }
     }
 }

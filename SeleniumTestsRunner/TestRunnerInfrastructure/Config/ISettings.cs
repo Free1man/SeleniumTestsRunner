@@ -1,5 +1,4 @@
-﻿using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
@@ -12,7 +11,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Config
         /// <summary>
         ///     Enbale Wait for Angular for WebDriver, requires EnableEvents = true.
         /// </summary>
-        bool EnableWaitForAngular { get;}
+        bool EnableWaitForAngular { get; }
         /// <summary>
         ///     Selenium Server hub url.
         /// </summary>

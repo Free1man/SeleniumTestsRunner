@@ -1,8 +1,7 @@
-﻿using System.Drawing.Imaging;
-using System.IO;
-using OpenQA.Selenium.Support.Events;
+﻿using OpenQA.Selenium.Support.Events;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Helpers;
+using System.IO;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Events
 {
@@ -41,17 +40,8 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Events
             Directory.CreateDirectory(path);
             path = Path.GetFullPath(path);
             var screenshotName = "failScreenshot";
-            //we are using "name" here because it is the standard capability name for BrowserStack and Saucelabs to identify the name of the test.
-            if (_settings.AdditionalRemoteDriverCapabilities.ContainsKey("name"))
-            {
-                screenshotName = _settings.AdditionalRemoteDriverCapabilities["name"];
-                foreach (char c in Path.GetInvalidFileNameChars())
-                {
-                    screenshotName = screenshotName.Replace(c, '_');
-                }
-            }
             _eventFiringWebDriver.GetScreenshot().SaveAsFile(path + $@"\{screenshotName}.png");
         }
-        
+
     }
 }

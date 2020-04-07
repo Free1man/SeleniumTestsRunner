@@ -1,14 +1,14 @@
-using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
+using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Helpers
 {
     /// <summary>
     ///     This class represents methods to handle the browser windows.
     /// </summary>
-    public class WindowHandler 
+    public class WindowHandler
     {
         /// <summary>
         ///     Current selenium WebDriver instance.
@@ -27,7 +27,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Helpers
         /// <param name="title">Window title</param>
         public void SwitchToWindowByTitle(string title)
         {
-            Wait.Until(driver => WindwowSelected(title));
+            Wait.Until(driver => WindowSelected(title));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Helpers
         /// </summary>
         /// <param name="title">title name</param>
         /// <returns>true or false</returns>
-        private bool WindwowSelected(string title)
+        private bool WindowSelected(string title)
         {
             var availableWindows = new List<string>(Driver.WindowHandles);
             foreach (var window in availableWindows)

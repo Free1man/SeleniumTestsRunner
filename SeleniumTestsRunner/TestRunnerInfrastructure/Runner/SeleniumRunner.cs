@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using OpenQA.Selenium;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Drivers;
+using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
+using System;
+using System.Diagnostics;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Runner
 {

@@ -1,7 +1,7 @@
-using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Runner;
+using System;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Helpers
 {
@@ -28,7 +28,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Helpers
         internal void WaitForAngular(string rootElement = "[ng-app]")
         {
             var script = "function result(){return !window.angular;}; return result()";
-            var javascriptExecutor = (IJavaScriptExecutor) Driver;
+            var javascriptExecutor = (IJavaScriptExecutor)Driver;
             var isAngularPage = !Convert.ToBoolean(javascriptExecutor.ExecuteScript(script));
             if (isAngularPage)
             {

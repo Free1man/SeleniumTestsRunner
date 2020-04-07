@@ -69,7 +69,7 @@
     <Compile Include="TestRunnerInfrastructure\Helpers\XPathConstructor.cs" />
     <Compile Include="TestRunnerInfrastructure\Logger\CustomLogger.cs" />
     <Compile Include="TestRunnerInfrastructure\Logger\ILogger.cs" />
-    <Compile Include="TestRunnerInfrastructure\PageObject\FrameObject.cs" />
+    <Compile Include="TestRunnerInfrastructure\PageObject\PageObjectHelper.cs" />
     <Compile Include="TestRunnerInfrastructure\Helpers\WindowHandler.cs" />
     <Compile Include="TestRunnerInfrastructure\Runner\Browser.cs" />
     <Compile Include="TestRunnerInfrastructure\Drivers\RemoteDriverFactory.cs" />

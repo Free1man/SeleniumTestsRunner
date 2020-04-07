@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObjects", "PageObject\PageObjects.csproj", "{F5F37F68-932A-4EE3-863E-24A40A50D91E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseHelper", "DataBaseHelper\DataBaseHelper.csproj", "{A9FD80A6-B9CB-4896-80F0-1E9303331072}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{D7974585-4113-4470-BF59-C5757116E4B1}"
 EndProject
@@ -21,10 +19,6 @@ Global
 		{F5F37F68-932A-4EE3-863E-24A40A50D91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5F37F68-932A-4EE3-863E-24A40A50D91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5F37F68-932A-4EE3-863E-24A40A50D91E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9FD80A6-B9CB-4896-80F0-1E9303331072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9FD80A6-B9CB-4896-80F0-1E9303331072}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9FD80A6-B9CB-4896-80F0-1E9303331072}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9FD80A6-B9CB-4896-80F0-1E9303331072}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7974585-4113-4470-BF59-C5757116E4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6ED3BB5-8DA6-420E-9F71-887C45740842}
 	EndGlobalSection
 EndGlobal

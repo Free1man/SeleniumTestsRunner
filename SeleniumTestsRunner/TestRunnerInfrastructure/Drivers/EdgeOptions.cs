@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
@@ -14,7 +9,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 
         public DriverOptions GetOptions()
         {
-            return  new OpenQA.Selenium.Edge.EdgeOptions();
+            return new OpenQA.Selenium.Edge.EdgeOptions();
         }
     }
 }

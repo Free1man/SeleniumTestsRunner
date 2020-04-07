@@ -7,7 +7,7 @@ public class XPathConstructor
     {
         string[] wordsArray = wordsToLookup.Split();
         StringBuilder constructedXpath = new StringBuilder("[");
-        string[] ignoredItems = {"not(self::script)"};
+        string[] ignoredItems = { "not(self::script)" };
         foreach (var item in ignoredItems)
         {
             constructedXpath.Append($"{item} and ");

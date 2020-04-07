@@ -1,10 +1,9 @@
-﻿using System;
-using System.Reflection;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.Events;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Events;
+using System;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 {
@@ -25,8 +24,8 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
             _settings = settings;
         }
 
-        public IWebDriver 
-            
+        public IWebDriver
+
             GetDriver()
         {
             var driver = GetEventFiringWebDriver(GetRemoteDriver());
@@ -54,7 +53,7 @@ namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
         private IBrowserOptions GetBrowserOptionsByReflection(ISettings settings)
         {
             var type = Type.GetType($"SeleniumTestsRunner.TestRunnerInfrastructure.Drivers.{settings.Browser}Options");
-            IBrowserOptions browser =  (IBrowserOptions)Activator.CreateInstance(type);
+            IBrowserOptions browser = (IBrowserOptions)Activator.CreateInstance(type);
             return browser;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumTestsRunner.TestRunnerInfrastructure.Config;
-using System.Collections.Generic;
 
 namespace SeleniumTestsRunner.TestRunnerInfrastructure.Drivers
 {
