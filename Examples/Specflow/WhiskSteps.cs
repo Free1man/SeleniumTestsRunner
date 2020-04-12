@@ -59,7 +59,29 @@ namespace Examples.Specflow
             Assert.AreEqual(expected, actualCount);
         }
 
+        [When(@"I upload new avatar")]
+        public void WhenIUploadNewAvatar()
+        {
+            _homePage.UpdateAvatar("Image//Yoda.jpeg");
+        }
 
+        [Then(@"I verify that avatar is updated")]
+        public void ThenIVerifyThatAvatarIsUpdated()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"I click text (.*)")]
+        public void WhenIClickText(string textToClick)
+        {
+            _homePage.ClickByText(textToClick);
+        }
+
+        [Then(@"I should see text (.*)")]
+        public void ThenIShouldSeeText(string text)
+        {
+            _homePage.WaitTextIsDisplayed(text);
+        }
 
     }
 }

@@ -11,6 +11,10 @@ namespace PageObjects.Whisk
         private IWebElement ListNameInput => Driver.FindElement(By.XPath("//*[@data-testid='create-new-shopping-list-name-input']//input"));
         private IWebElement AddItemInput => Driver.FindElement(By.XPath("//input[@data-testid ='desktop-add-item-autocomplete']"));
 
+        private IWebElement AvatarButton => Driver.FindElement(By.XPath("//*[@data-testid='avatar-button']"));
+
+        private IWebElement UploadElement => Driver.FindElement(By.XPath("//input[@type ='file']"));
+
         private const string ListItemXPath = "//*[@data-testid='shopping-lists-list-name']";
 
         private const string ListItemsXPath = "//*[@data-testid='shopping-list-item']";
@@ -77,6 +81,14 @@ namespace PageObjects.Whisk
         public int ListItemsCount()
         {
             return Driver.FindElements(By.XPath(ListItemsXPath)).Count;
+        }
+
+        public void UpdateAvatar(string fileName)
+        {
+            AvatarButton.Click();
+            ClickByText("Settings");
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            UploadElement.SendKeys(folder + "\\" + fileName);
         }
     }
 }

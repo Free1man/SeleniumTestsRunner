@@ -1,6 +1,9 @@
-﻿Feature: Example for Whisk
+﻿Feature: Verify that valid user can create a list 
+		 and add some items to it.
 
 Background: Delete all lists before start
+	# Not the best idea to do data setup via UI, as it is slow, only for demo.
+	# Storing password here only for demo purpose 
 	Given I login as galperin.job@gmail.com with password Test1357900
 	And I delete all lists except default
 
